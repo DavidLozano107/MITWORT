@@ -8,7 +8,6 @@ export default class Login extends Component {
     return (
       <div>
         <FormLogin />
-        <button onClick={onIngreso}>Iniciar sesión</button>
       </div>
     );
   }

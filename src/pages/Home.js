@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Login from "./Login";
+import Form from "../components/formLogin/FormLogin"
 import Bienvenido from "./Bienvenido";
 
 const usuario = {
@@ -22,7 +23,7 @@ class Home extends Component {
     if (login) {
       return <Bienvenido usuario={usuario} />;
     } else {
-      return <Login onIngreso={this.login} />;
+      return <Form onIngreso={this.login} />;
     }
   }
 }
