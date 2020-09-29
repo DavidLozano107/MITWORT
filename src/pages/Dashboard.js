@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import User from "../components/user/";
+import User from "../components/user";
 
-class Bienvenido extends Component {
+class Dashboard extends Component {
   render() {
     return (
       <div>
@@ -11,4 +11,4 @@ class Bienvenido extends Component {
   }
 }
 
-export default Bienvenido;
+export default Dashboard;
