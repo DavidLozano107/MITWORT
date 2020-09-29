@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Login from "./Login";
 import Form from "../components/formLogin/FormLogin"
 import Bienvenido from "./Bienvenido";
 
@@ -10,13 +9,15 @@ const usuario = {
 class Home extends Component {
   state = {
     login: false,
-  };
+  }
 
   login = () => {
     this.setState({
       login: true,
     });
-  };
+  }
+
+
 
   render() {
     const { login } = this.state;

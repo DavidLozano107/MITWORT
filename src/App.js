@@ -5,6 +5,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 //Pages
 import Home from "./pages/Home";
 
+
+
 function App() {
   const firebase = useFirebaseApp();
   console.log(firebase);
