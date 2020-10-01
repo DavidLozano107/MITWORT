@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import Routes from "./routes/Routes";
 import firebaseConfig from "./firebase-config";
 import * as serviceWorker from "./serviceWorker";
 
@@ -10,7 +10,7 @@ ReactDOM.render(
   <FirebaseAppProvider firebaseConfig={firebaseConfig}>
     <React.StrictMode>
       <Suspense fallback={"Conetando la app.."}>
-        <App />
+        <Routes />
       </Suspense>
     </React.StrictMode>
   </FirebaseAppProvider>,
