@@ -138,7 +138,7 @@ form h2{
   width: 100%;
   height: 100%;
   top: 0;
-  left: 0;
+  left: 20px;
   border: none;
   outline: none;
   background: none;
@@ -148,15 +148,20 @@ form h2{
   color: #555;
 }
 
-a{
+button{
   margin: 5px 10px;
   text-decoration: none;
+  border: none;
+  background: none;
+  outline: none;
   color: rgb(209, 209, 209);
   font-size: 0.9rem;
+  font-weight: 600;
   transition: .3s;
+  cursor: pointer;
 }
 
-a:hover{
+button:hover{
   color: rgb(20, 250, 116) ;
 }
 
@@ -180,4 +185,37 @@ a:hover{
 
 .btn:hover{
   background-position: right;
+  color: #fff;
 }
+
+
+
+/*Errores de Login*/
+
+.errorPass{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 30px;
+  left: 100px;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.9rem;
+  font-family: 'Poppins', sans-serif;
+  color: red;
+  transition: all 1s linear;
+}
+
+.disabled{
+  background: red;
+  cursor: no-drop;
+}
+
+
+
+
+
+
+/*-------------------*/
