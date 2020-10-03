@@ -42,29 +42,33 @@ class SignUpForm extends Component {
               <div className="i">
                 <i className="fas fa-user"><FontAwesomeIcon icon={faUser}/></i>
               </div>
-              <Field
-                className="input"
-                name = "lastName" 
-                type="text" 
-                placeholder="Last Name">
-              </Field>
-              {errors.lastName && touched.lastName && 
-                <div className="errorPass">{errors.lastName}</div>
-               }
+              <div>
+                <Field
+                  className="input"
+                  name = "lastName" 
+                  type="text" 
+                  placeholder="Last Name">
+                </Field>
+                {errors.lastName && touched.lastName && 
+                  <div className="errorPass">{errors.lastName}</div>
+                }
+              </div>
             </div>
             <div className="input-div three">
               <div className="i">
                 <i className="fas fa-envelope"><FontAwesomeIcon icon={faEnvelope}/></i>
               </div>
-              <Field
-                className="input"
-                name = "emailUser" 
-                type="email" 
-                placeholder="Email">
-              </Field>
-              {errors.emailUser && touched.emailUser && 
-                <div className="errorPass">{errors.emailUser}</div>
-              }
+              <div>
+                <Field
+                  className="input"
+                  name = "emailUser" 
+                  type="email" 
+                  placeholder="Email">
+                </Field>
+                {errors.emailUser && touched.emailUser && 
+                  <div className="errorPass">{errors.emailUser}</div>
+                }
+              </div>
             </div>
             <div className="input-div four">
               <div className="i">
