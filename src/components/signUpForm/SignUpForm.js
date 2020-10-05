@@ -1,5 +1,6 @@
 import React from "react";
 import { withFormik, Field } from "formik";
+import { auth } from "../../firebase-config";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -176,5 +177,15 @@ export default withFormik({
   handleSubmit(values, formikBag) {
     formikBag.setSubmitting(false);
     console.log(values);
+    const { emailUser, passUser } = values;
+
+    auth
+      .createUserWithEmailAndPassword(emailUser, passUser)
+      .catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
   },
 })(SignUpForm);
