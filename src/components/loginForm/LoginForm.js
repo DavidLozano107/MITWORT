@@ -6,6 +6,8 @@ import logoHome from "./img/avatarMit.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
+import { auth } from "../../firebase-config";
+
 const Login = (props) => {
   const {
     handleSubmit,
@@ -109,6 +111,17 @@ export default withFormik({
   handleSubmit(values, formikBag) {
     formikBag.setSubmitting(false);
     console.log(values);
+
+    const { emailUser, passUser } = values;
+
+    auth
+      .signInWithEmailAndPassword(emailUser, passUser)
+      .catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
   },
   /*---------------------------------------------*/
 })(Login);
