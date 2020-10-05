@@ -3,21 +3,27 @@ import Login from "../components/login/";
 import Dashboard from "./Dashboard";
 import "../components/login/styleFormLogin.css";
 
-const usuario = {
-  nickname: "David lozano",
-};
+import { auth } from "../firebase-config";
 
-const Home = () => {
-  const [login, setLogin] = useState(false);
+const Home = (props) => {
+  const [user, setUser] = React.useState(null);
 
-  const loginAct = () => {
-    setLogin(true);
-  };
+  React.useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      console.log(user);
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+  }, []);
+  console.log(user);
 
-  if (login) {
-    return <Dashboard usuario={usuario} />;
+  if (user === null) {
+    return <Login />;
   } else {
-    return <Login onIngreso={loginAct} />;
+    return <Dashboard user={user} />;
   }
 };
 

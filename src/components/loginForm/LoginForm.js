@@ -110,18 +110,15 @@ export default withFormik({
   /*-----Enviar controlador. Esto debe pasarse onSubmit={props.handleSubmit}. Para obtener más información sobre el proceso de envío*/
   handleSubmit(values, formikBag) {
     formikBag.setSubmitting(false);
-    console.log(values);
 
-    const { emailUser, passUser } = values;
+    const { email, password } = values;
 
-    auth
-      .signInWithEmailAndPassword(emailUser, passUser)
-      .catch(function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
-      });
+    auth.signInWithEmailAndPassword(email, password).catch(function (error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
   },
   /*---------------------------------------------*/
 })(Login);

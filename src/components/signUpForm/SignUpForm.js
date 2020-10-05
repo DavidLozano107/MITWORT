@@ -177,6 +177,7 @@ export default withFormik({
   handleSubmit(values, formikBag) {
     formikBag.setSubmitting(false);
     console.log(values);
+
     const { emailUser, passUser } = values;
 
     auth
