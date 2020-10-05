@@ -1,10 +1,22 @@
-export default {
-  apiKey: "AIzaSyASGD6oO6EycEd87xY4dD44is-nYH886VI",
-  authDomain: "mitwort-27b69.firebaseapp.com",
-  databaseURL: "https://mitwort-27b69.firebaseio.com",
-  projectId: "mitwort-27b69",
-  storageBucket: "mitwort-27b69.appspot.com",
-  messagingSenderId: "336549887969",
-  appId: "1:336549887969:web:b59291101b920f7c745ca0",
-  measurementId: "G-1X0W9XM070",
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCDuN7gHLhAiRGxZkycmtLb37-3Abx2DZo",
+  authDomain: "mitwort-f1626.firebaseapp.com",
+  databaseURL: "https://mitwort-f1626.firebaseio.com",
+  projectId: "mitwort-f1626",
+  storageBucket: "mitwort-f1626.appspot.com",
+  messagingSenderId: "763244278348",
+  appId: "1:763244278348:web:4a278cd052bc9def6bfae9",
+  measurementId: "G-LNP1ZFN9YV",
 };
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.firestore();
+const auth = firebase.auth();
+
+export { db, auth };

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Login from "../components/login/";
 import Dashboard from "./Dashboard";
 import "../components/login/styleFormLogin.css";
@@ -7,25 +7,18 @@ const usuario = {
   nickname: "David lozano",
 };
 
-class Home extends Component {
-  state = {
-    login: false,
+const Home = () => {
+  const [login, setLogin] = useState(false);
+
+  const loginAct = () => {
+    setLogin(true);
   };
 
-  login = () => {
-    this.setState({
-      login: true,
-    });
-  };
-
-  render() {
-    const { login } = this.state;
-    if (login) {
-      return <Dashboard usuario={usuario} />;
-    } else {
-      return <Login onIngreso={this.login} />;
-    }
+  if (login) {
+    return <Dashboard usuario={usuario} />;
+  } else {
+    return <Login onIngreso={loginAct} />;
   }
-}
+};
 
 export default Home;

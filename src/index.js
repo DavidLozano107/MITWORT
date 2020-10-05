@@ -1,6 +1,10 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
+<<<<<<< HEAD
 import Routes from "./routes/Routes";
+=======
+import App from "./routes/App";
+>>>>>>> loginFuncional
 import firebaseConfig from "./firebase-config";
 import * as serviceWorker from "./serviceWorker";
 
