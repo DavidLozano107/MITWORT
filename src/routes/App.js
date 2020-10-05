@@ -3,9 +3,7 @@ import { useFirebaseApp } from "reactfire";
 import { BrowserRouter, Route } from "react-router-dom";
 
 //Pages
-import Home from "./pages/Home";
-
-
+import Home from "../pages/Home";
 
 function App() {
   const firebase = useFirebaseApp();

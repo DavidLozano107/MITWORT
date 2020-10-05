@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import App from "./routes/App";
 import firebaseConfig from "./firebase-config";
 import * as serviceWorker from "./serviceWorker";
 
