@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { withFormik, Field } from "formik";
 
 import logoHome from "./img/avatarMit.svg";

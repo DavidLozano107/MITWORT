@@ -1,19 +1,14 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import Routes from "./routes/Routes";
-import firebaseConfig from "./firebase-config";
 import * as serviceWorker from "./serviceWorker";
 
-import { FirebaseAppProvider } from "reactfire";
-
 ReactDOM.render(
-  <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-    <React.StrictMode>
-      <Suspense fallback={"Conetando la app.."}>
-        <Routes />
-      </Suspense>
-    </React.StrictMode>
-  </FirebaseAppProvider>,
+  <React.StrictMode>
+    <Suspense fallback={"Conetando la app.."}>
+      <Routes />
+    </Suspense>
+  </React.StrictMode>,
   document.getElementById("root")
 );
 
