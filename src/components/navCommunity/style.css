@@ -1,0 +1,30 @@
+.navbarCommunity {
+  background: green;
+  padding: 1em;
+  border-radius: 55px;
+  position: absolute;
+  width: 90%;
+  height: 98vh;
+  overflow: auto;
+}
+
+.navbarCommunity-cardCommunity {
+  position: absolute;
+
+  width: 22em;
+  height: 15em;
+
+  background: #ffffff;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 70px;
+}
+.navbarCommunity .container {
+  grid-template-columns: none;
+  grid-gap: 0rem;
+  padding: 0 0rem;
+}
+
+.navbarCommunity .col {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
