@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 const NavbarCommunity = () => {
   return (
@@ -15,17 +16,10 @@ const NavbarCommunity = () => {
             <div className="col">
               <div className="navbarCommunity-cardCommunity"></div>
             </div>
-          </div>
-
-          <div className="row ">
             <div className="col">
-              <div className="navbarCommunity-cardCommunity"></div>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col">
-              <div className="navbarCommunity-cardCommunity"></div>
+              <div>
+                <Link to="/comunity">Communities</Link>
+              </div>
             </div>
           </div>
         </div>

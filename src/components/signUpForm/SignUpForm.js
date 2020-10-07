@@ -12,7 +12,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const SignUpForm = (props) => {
-  const { handleSubmit, isSubmitting, errors, isValid, touched } = props;
+  const {
+    handleSubmit,
+    isSubmitting,
+    errors,
+    isValid,
+    touched,
+    errorMessage,
+  } = props;
 
   return (
     <>
@@ -124,6 +131,7 @@ const SignUpForm = (props) => {
               )}
             </div>
           </div>
+          {console.log(errorMessage)}
           <button
             type="submit"
             className={`sign ${isSubmitting || !isValid ? "disabled" : ""}`}
@@ -191,13 +199,16 @@ export default withFormik({
             // Email sent.
           })
           .catch(function (error) {
-            // An error happened.
+            var errorMessage = error.message;
+
+            return errorMessage;
           });
       })
       .catch(function (error) {
         // Handle Errors here.
         //var errorCode = error.code;        <---- REVISAR
-        //var errorMessage = error.message;  <---- REVISAR
+        var errorMessage = error.message;
+        console.log(errorMessage);
         // ...
       });
   },

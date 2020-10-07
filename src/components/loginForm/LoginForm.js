@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withFormik, Field } from "formik";
 
 import logoHome from "./img/avatarMit.svg";
@@ -17,6 +17,7 @@ const Login = (props) => {
     touched,
     onRegisterActive,
     onForgotPasswortActive,
+    status,
   } = props;
 
   return (
@@ -60,8 +61,12 @@ const Login = (props) => {
             )}
           </div>
         </div>
-        <button onClick={onForgotPasswortActive}>Forgort Password</button>
-        <button onClick={onRegisterActive}>Sign Up</button>
+        <button type="button" onClick={onForgotPasswortActive}>
+          Forgort Password
+        </button>
+        <button type="button" onClick={onRegisterActive}>
+          Sign Up
+        </button>
         <button
           type="submit"
           className={`sign ${isSubmitting || !isValid ? "disabled" : "sign"}`}
@@ -69,9 +74,14 @@ const Login = (props) => {
           value="Login"
           // onClick={onIngreso}
         >
-          Submit
+          Sign in
         </button>
       </form>
+      {status && (
+        <div className="alert alert-danger" role="alert">
+          {status}
+        </div>
+      )}
     </div>
   );
 };
@@ -92,7 +102,9 @@ export default withFormik({
     const errors = {};
 
     if (
-      !/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(values.email)
+      !/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(
+        values.email
+      )
     ) {
       errors.email = "Invalid email address";
     } else if (!values.password) {
@@ -113,8 +125,15 @@ export default withFormik({
 
     auth.signInWithEmailAndPassword(email, password).catch(function (error) {
       // Handle Errors here.
-      //var errorCode = error.code; <-- REVISAR
-      //var errorMessage = error.message;  <-- REVISAR
+      // const errorCode = error.code;
+      // const  = error.message;
+
+      formikBag.setStatus(error.message);
+
+      setTimeout(() => {
+        formikBag.setStatus(false);
+      }, 2000);
+
       // ...
     });
   },

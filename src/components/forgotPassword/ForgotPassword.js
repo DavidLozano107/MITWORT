@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withFormik, Field } from "formik";
-
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
@@ -8,7 +8,15 @@ import { auth } from "../../firebase-config";
 
 class ForgotPassword extends Component {
   render() {
-    const { handleSubmit, isSubmitting, isValid, errors, touched } = this.props;
+    const {
+      handleSubmit,
+      isSubmitting,
+      isValid,
+      errors,
+      touched,
+      status,
+      fieldValue,
+    } = this.props;
 
     return (
       <>
@@ -41,7 +49,21 @@ class ForgotPassword extends Component {
             >
               Submit
             </button>
+
+            <a className="sign text-center" href="/">
+              Back
+            </a>
           </form>
+          {status && !status && (
+            <div className="alert alert-success" role="alert">
+              {status}
+            </div>
+          )}
+          {status && errors && (
+            <div className="alert alert-danger" role="alert">
+              {status}
+            </div>
+          )}
         </div>
       </>
     );
@@ -77,10 +99,18 @@ export default withFormik({
     auth
       .sendPasswordResetEmail(values.emailForgot)
       .then(function () {
-        // Email sent.
+        formikBag.setStatus("mail sent successfully");
+        setTimeout(() => {
+          formikBag.setStatus(false);
+        }, 2000);
       })
       .catch(function (error) {
-        // An error happened.
+        formikBag.setStatus(error.message);
+        formikBag.setErrors(true);
+        setTimeout(() => {
+          formikBag.setErrors(false);
+          formikBag.setStatus(false);
+        }, 2000);
       });
   },
 })(ForgotPassword);

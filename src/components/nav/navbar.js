@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 
+import { Link, NavLink } from "react-router-dom";
 import { auth } from "../../firebase-config";
 
 const Navbar = ({ usuario }) => {
@@ -25,11 +26,14 @@ const Navbar = ({ usuario }) => {
       <div className="row">
         <div className="navbar-navigation ">
           <ul>
+            <NavLink exact to="/">
+              home
+            </NavLink>
             <li>Lorem</li>
+            <NavLink to="/Profile">Profile</NavLink>
+            <NavLink to="/comunity">Chat</NavLink>
             <li>Lorem</li>
-            <li>Lorem</li>
-            <li>Lorem</li>
-            <li>Lorem</li>
+            <NavLink to="/comunity">Communities</NavLink>
           </ul>
         </div>
       </div>

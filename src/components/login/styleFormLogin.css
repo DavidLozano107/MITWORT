@@ -1,17 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 
-
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
-  font-family: 'Poppins', sans-serif;
+body {
+  font-family: "Poppins", sans-serif;
 }
 
-.wave{
+.wave {
   position: fixed;
   height: 102%;
   left: 0;
@@ -19,7 +18,7 @@ body{
   z-index: -1;
 }
 
-.container-login{
+.container-login {
   width: 100%; /*vw*/
   height: 100vh;
   display: grid;
@@ -28,38 +27,38 @@ body{
   padding: 0 2rem;
 }
 
-.imagen{
+.imagen {
   display: flex;
   justify-content: center; /*Mirar si le coloco center*/
   align-items: center;
 }
 
-.imagen img{
+.imagen img {
   width: 70%;
 }
 
-.login-container{
+.login-container {
   display: flex;
   align-items: center;
   text-align: center;
 }
 
-form{
+form {
   width: 360px;
 }
 
-.avatar{
-  width: 80%;;
+.avatar {
+  width: 80%;
 }
 
-form h2{
+form h2 {
   font-size: 2.9rem;
   text-transform: uppercase;
   margin: 15px 0;
   color: #333;
 }
 
-.input-div{
+.input-div {
   position: relative;
   display: grid;
   grid-template-columns: 7% 93%;
@@ -68,72 +67,74 @@ form h2{
   border-bottom: 2px solid #d9d9d9;
 }
 
-.input-div:after, .input-div:before{
-  content: '';
+.input-div:after,
+.input-div:before {
+  content: "";
   position: absolute;
   bottom: -2px;
   width: 0;
   height: 2px;
   background-color: #38d39f;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.input-div:after{
+.input-div:after {
   right: 50%;
 }
 
-.input-div:before{
+.input-div:before {
   left: 50%;
 }
 
-.input-div.focus .i i{
+.input-div.focus .i i {
   color: #38d39f;
 }
 
-.input-div.focus div h5{
+.input-div.focus div h5 {
   top: -5px;
   font-size: 15px;
 }
 
-.input-div.focus:after, .input-div.focus:before{
+.input-div.focus:after,
+.input-div.focus:before {
   width: 50%;
 }
 
-.input-div.one{
+.input-div.one {
   margin-top: 0;
 }
 
-.input-div.two{
+.input-div.two {
   margin-bottom: 5px;
 }
 
-.i{
+.i {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.i i{
-  color: #45FF94;
-  transition: .3s;
+.i i {
+  color: #45ff94;
+  transition: 0.3s;
 }
 
-.input-div > div{
+.input-div > div {
   position: relative;
   height: 45px;
 }
 
-.input-div > div h5{
+.input-div > div h5 {
   position: absolute;
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
   color: #999;
   font-size: 18px;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.input{
+.input {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -144,11 +145,11 @@ form h2{
   background: none;
   padding: 0.5rem 0.7rem;
   font-size: 1.2rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #555;
 }
 
-button{
+button {
   margin: 5px 10px;
   text-decoration: none;
   border: none;
@@ -157,15 +158,15 @@ button{
   color: rgb(209, 209, 209);
   font-size: 0.9rem;
   font-weight: 600;
-  transition: .3s;
+  transition: 0.3s;
   cursor: pointer;
 }
 
-button:hover{
-  color: rgb(20, 250, 116) ;
+button:hover {
+  color: rgb(20, 250, 116);
 }
 
-.sign{
+.sign {
   display: block;
   width: 100%;
   height: 50px;
@@ -174,23 +175,23 @@ button:hover{
   font-size: 1.2rem;
   outline: none;
   border: none;
-  background: linear-gradient(to right,#27A6FE, #38AEFF,#48B4FF);
+  background: linear-gradient(to right, #27a6fe, #38aeff, #48b4ff);
   cursor: pointer;
   color: #fff;
   text-transform: uppercase;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-size: 200%;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.sign:hover{
+.sign:hover {
   background-position: right;
   color: #fff;
 }
 
 /*Errores de Login*/
 
-.errorPass{
+.errorPass {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -201,46 +202,46 @@ button:hover{
   background: none;
   padding: 0.5rem 0.7rem;
   font-size: 0.9rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: red;
   transition: all 1s linear;
 }
 
-.disabled{
+.disabled {
   background: red;
   cursor: no-drop;
 }
 
 /*-------------------*/
 
-@media(max-width: 1450px){
+@media (max-width: 1450px) {
   form {
     width: 300px;
   }
 }
 
-@media(max-width: 1400px){
-
+@media (max-width: 1400px) {
   form {
     width: 300px;
   }
 }
 
-@media(max-width: 1300px){
-
+@media (max-width: 1300px) {
   form {
     width: 250px;
   }
+  div.imagen img {
+    display: none;
+  }
 }
 
-@media(max-width: 1200px){
-
+@media (max-width: 1200px) {
   form {
     width: 200px;
   }
 }
 
-@media(max-width: 1024px){
+@media (max-width: 1024px) {
   .container-login {
     width: 100%;
     height: 100vh;
@@ -252,12 +253,9 @@ button:hover{
   form {
     width: 360px;
   }
-
-
 }
 
-
-@media(max-width: 1000px){
+@media (max-width: 1000px) {
   .container-login {
     width: 100%;
     height: 100vh;
@@ -269,11 +267,9 @@ button:hover{
   form {
     width: 360px;
   }
-
-
 }
 
-@media(max-width: 900px){
+@media (max-width: 900px) {
   .container-login {
     width: 100%;
     height: 100vh;
@@ -285,11 +281,9 @@ button:hover{
   form {
     width: 360px;
   }
-
-
 }
 
-@media(max-width: 850px){
+@media (max-width: 850px) {
   .container-login {
     width: 100%;
     height: 100vh;
@@ -297,16 +291,14 @@ button:hover{
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 1rem;
     padding: 0 16rem;
-}
-
-  div.imagen img{
-    display: none;
   }
 
-
+  div.imagen img {
+    display: none;
+  }
 }
 
-@media(max-width: 768px){
+@media (max-width: 768px) {
   .container-login {
     width: 100%;
     height: 100vh;
@@ -318,14 +310,9 @@ button:hover{
   form {
     width: 360px;
   }
-
-
 }
 
-
-
-
-@media(max-width: 750px){
+@media (max-width: 750px) {
   .container-login {
     width: 100%;
     height: 100vh;
@@ -333,16 +320,10 @@ button:hover{
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 1rem;
     padding: 0 13rem;
-}
-
-  div.imagen img{
-    display: none;
   }
-
-
 }
 
-@media(max-width: 650px){
+@media (max-width: 650px) {
   .container-login {
     width: 100%;
     height: 100vh;
@@ -350,16 +331,14 @@ button:hover{
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 1rem;
     padding: 0 10rem;
-}
-
-  div.imagen img{
-    display: none;
   }
 
-
+  div.imagen img {
+    display: none;
+  }
 }
 
-@media(max-width: 600px){
+@media (max-width: 600px) {
   .container-login {
     width: 100%;
     height: 100vh;
@@ -367,16 +346,14 @@ button:hover{
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 1rem;
     padding: 0 9rem;
-}
-
-  div.imagen img{
-    display: none;
   }
 
-
+  div.imagen img {
+    display: none;
+  }
 }
 
-@media(max-width: 540px){
+@media (max-width: 540px) {
   .container-login {
     width: 100%;
     height: 100vh;
@@ -384,18 +361,14 @@ button:hover{
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 1rem;
     padding: 0 6rem;
-}
-
-  div.imagen img{
-    display: none;
   }
 
-
+  div.imagen img {
+    display: none;
+  }
 }
 
-
-
-@media(max-width: 414px){
+@media (max-width: 414px) {
   .container-login {
     width: 100%;
     height: 100vh;
@@ -403,16 +376,14 @@ button:hover{
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 1rem;
     padding: 0 2rem;
-}
-
-  div.imagen img{
-    display: none;
   }
 
-
+  div.imagen img {
+    display: none;
+  }
 }
 
-@media(max-width: 375px){
+@media (max-width: 375px) {
   .container-login {
     width: 100%;
     height: 100vh;
@@ -420,18 +391,15 @@ button:hover{
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 1rem;
     padding: 0 1rem;
-}
-
-  div.imagen img{
-    display: none;
   }
 
-
+  div.imagen img {
+    display: none;
+  }
 }
 
-
-@media (max-width: 360px){
-.container-login {
+@media (max-width: 360px) {
+  .container-login {
     width: 100%;
     height: 100vh;
     display: grid;
@@ -440,6 +408,3 @@ button:hover{
     padding: 0 0rem;
   }
 }
-
-
-

@@ -8,7 +8,8 @@ import { auth } from "../firebase-config";
 
 import Login from "../components/login";
 import Navbar from "../components/nav";
-import avCommunity from "../components/navCommunity";
+import ProfileUser from "../components/profile";
+import NavCommunity from "../components/navCommunity";
 
 import NewsFeed from "../pages/NewsFeed";
 import Comunity from "../pages/comunity";
@@ -18,7 +19,6 @@ function Routes() {
 
   React.useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      console.log(user);
       if (user) {
         setUser(user);
       } else {
@@ -42,6 +42,14 @@ function Routes() {
                     <NewsFeed usuario={user} />
                   </Route>
                   <Route path="/comunity" component={Comunity} />
+                  <Route path="/profile" component={ProfileUser} />
+                </Switch>
+              </div>
+              <div className="col-sm-3">
+                <Switch>
+                  <Route path="/" exact>
+                    <NavCommunity />
+                  </Route>
                 </Switch>
               </div>
             </div>
@@ -51,7 +59,7 @@ function Routes() {
 
       {user === null && (
         <Switch>
-          <Route path="/" component={Login}></Route>
+          <Route path="/" component={Login} />
         </Switch>
       )}
     </BrowserRouter>
