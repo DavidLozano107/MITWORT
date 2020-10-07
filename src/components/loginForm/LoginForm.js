@@ -64,7 +64,7 @@ const Login = (props) => {
         <button onClick={onRegisterActive}>Sign Up</button>
         <button
           type="submit"
-          className={`btn ${isSubmitting || !isValid ? "disabled" : ""}`}
+          className={`sign ${isSubmitting || !isValid ? "disabled" : "sign"}`}
           disabled={isSubmitting || !isValid}
           value="Login"
           // onClick={onIngreso}
@@ -92,9 +92,7 @@ export default withFormik({
     const errors = {};
 
     if (
-      !/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(
-        values.email
-      )
+      !/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(values.email)
     ) {
       errors.email = "Invalid email address";
     } else if (!values.password) {
@@ -115,8 +113,8 @@ export default withFormik({
 
     auth.signInWithEmailAndPassword(email, password).catch(function (error) {
       // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
+      //var errorCode = error.code; <-- REVISAR
+      //var errorMessage = error.message;  <-- REVISAR
       // ...
     });
   },

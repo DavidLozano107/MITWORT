@@ -35,7 +35,7 @@ class ForgotPassword extends Component {
             </div>
             <button
               type="submit"
-              className={`btn ${isSubmitting || !isValid ? "disabled" : ""}`}
+              className={`sign ${isSubmitting || !isValid ? "disabled" : ""}`}
               disabled={isSubmitting || !isValid}
               value="Forgot"
             >

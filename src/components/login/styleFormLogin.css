@@ -20,7 +20,7 @@ body{
 }
 
 .container-login{
-  width: 100vw;
+  width: 100%; /*vw*/
   height: 100vh;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -35,7 +35,7 @@ body{
 }
 
 .imagen img{
-  width: 600px;
+  width: 70%;
 }
 
 .login-container{
@@ -49,7 +49,7 @@ form{
 }
 
 .avatar{
-  width: 300px;;
+  width: 80%;;
 }
 
 form h2{
@@ -165,7 +165,7 @@ button:hover{
   color: rgb(20, 250, 116) ;
 }
 
-.btn{
+.sign{
   display: block;
   width: 100%;
   height: 50px;
@@ -183,12 +183,10 @@ button:hover{
   transition: .5s;
 }
 
-.btn:hover{
+.sign:hover{
   background-position: right;
   color: #fff;
 }
-
-
 
 /*Errores de Login*/
 
@@ -213,9 +211,235 @@ button:hover{
   cursor: no-drop;
 }
 
-
-
-
-
-
 /*-------------------*/
+
+@media(max-width: 1450px){
+  form {
+    width: 300px;
+  }
+}
+
+@media(max-width: 1400px){
+
+  form {
+    width: 300px;
+  }
+}
+
+@media(max-width: 1300px){
+
+  form {
+    width: 250px;
+  }
+}
+
+@media(max-width: 1200px){
+
+  form {
+    width: 200px;
+  }
+}
+
+@media(max-width: 1024px){
+  .container-login {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 9rem;
+    padding: 0 21rem;
+  }
+  form {
+    width: 360px;
+  }
+
+
+}
+
+
+@media(max-width: 1000px){
+  .container-login {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 9rem;
+    padding: 0 21rem;
+  }
+  form {
+    width: 360px;
+  }
+
+
+}
+
+@media(max-width: 900px){
+  .container-login {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 9rem;
+    padding: 0 19rem;
+  }
+  form {
+    width: 360px;
+  }
+
+
+}
+
+@media(max-width: 850px){
+  .container-login {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+    padding: 0 16rem;
+}
+
+  div.imagen img{
+    display: none;
+  }
+
+
+}
+
+@media(max-width: 768px){
+  .container-login {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+    padding: 0 13rem;
+  }
+  form {
+    width: 360px;
+  }
+
+
+}
+
+
+
+
+@media(max-width: 750px){
+  .container-login {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+    padding: 0 13rem;
+}
+
+  div.imagen img{
+    display: none;
+  }
+
+
+}
+
+@media(max-width: 650px){
+  .container-login {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+    padding: 0 10rem;
+}
+
+  div.imagen img{
+    display: none;
+  }
+
+
+}
+
+@media(max-width: 600px){
+  .container-login {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+    padding: 0 9rem;
+}
+
+  div.imagen img{
+    display: none;
+  }
+
+
+}
+
+@media(max-width: 540px){
+  .container-login {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+    padding: 0 6rem;
+}
+
+  div.imagen img{
+    display: none;
+  }
+
+
+}
+
+
+
+@media(max-width: 414px){
+  .container-login {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+    padding: 0 2rem;
+}
+
+  div.imagen img{
+    display: none;
+  }
+
+
+}
+
+@media(max-width: 375px){
+  .container-login {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+    padding: 0 1rem;
+}
+
+  div.imagen img{
+    display: none;
+  }
+
+
+}
+
+
+@media (max-width: 360px){
+.container-login {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0rem;
+    padding: 0 0rem;
+  }
+}
+
+
+

@@ -126,7 +126,7 @@ const SignUpForm = (props) => {
           </div>
           <button
             type="submit"
-            className={`btn ${isSubmitting || !isValid ? "disabled" : ""}`}
+            className={`sign ${isSubmitting || !isValid ? "disabled" : ""}`}
             disabled={isSubmitting || !isValid}
           >
             Sign Up
@@ -196,8 +196,8 @@ export default withFormik({
       })
       .catch(function (error) {
         // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        //var errorCode = error.code;        <---- REVISAR
+        //var errorMessage = error.message;  <---- REVISAR
         // ...
       });
   },
