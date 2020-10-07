@@ -8,12 +8,13 @@ import { auth } from "../firebase-config";
 
 import Login from "../components/login";
 import Navbar from "../components/nav";
-import ProfileUser from "../components/profile";
+import ProfileUser from "../components/profile/";
 import NavCommunity from "../components/navCommunity";
 
 import NewsFeed from "../pages/NewsFeed";
 import Comunity from "../pages/comunity";
-
+import Chat from "../components/chat";
+import NavChat from "../components/navChat";
 function Routes() {
   const [user, setUser] = React.useState(null);
 
@@ -43,6 +44,7 @@ function Routes() {
                   </Route>
                   <Route path="/comunity" component={Comunity} />
                   <Route path="/profile" component={ProfileUser} />
+                  <Route path="/chat" component={Chat} />
                 </Switch>
               </div>
               <div className="col-sm-3">
@@ -50,6 +52,8 @@ function Routes() {
                   <Route path="/" exact>
                     <NavCommunity />
                   </Route>
+                  <Route path="/chat" component={NavChat} />
+                  <Route path="/profile" component={NavCommunity} />
                 </Switch>
               </div>
             </div>

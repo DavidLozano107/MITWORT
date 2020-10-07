@@ -50,11 +50,11 @@ class ForgotPassword extends Component {
               Submit
             </button>
 
-            <a className="sign text-center" href="/">
+            <a className="sign" href="/">
               Back
             </a>
           </form>
-          {status && !status && (
+          {status && !errors && (
             <div className="alert alert-success" role="alert">
               {status}
             </div>
@@ -100,9 +100,11 @@ export default withFormik({
       .sendPasswordResetEmail(values.emailForgot)
       .then(function () {
         formikBag.setStatus("mail sent successfully");
+        formikBag.setErrors(false);
         setTimeout(() => {
           formikBag.setStatus(false);
-        }, 2000);
+          formikBag.setErrors(false);
+        }, 5000);
       })
       .catch(function (error) {
         formikBag.setStatus(error.message);
@@ -110,7 +112,7 @@ export default withFormik({
         setTimeout(() => {
           formikBag.setErrors(false);
           formikBag.setStatus(false);
-        }, 2000);
+        }, 5000);
       });
   },
 })(ForgotPassword);

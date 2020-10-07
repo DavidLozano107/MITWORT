@@ -132,7 +132,7 @@ export default withFormik({
 
       setTimeout(() => {
         formikBag.setStatus(false);
-      }, 2000);
+      }, 5000);
 
       // ...
     });
