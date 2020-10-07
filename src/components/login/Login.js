@@ -5,6 +5,8 @@ import LoginForm from "../loginForm/";
 import SingUpForm from "../signUpForm/";
 import ForgotPassword from "../forgotPassword/";
 
+import "./styleFormLogin.css";
+
 const Login = () => {
   const [register, setRegister] = useState(false);
   const [forgotPassword, setforgotPassword] = useState(false);

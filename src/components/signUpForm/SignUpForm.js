@@ -182,6 +182,18 @@ export default withFormik({
 
     auth
       .createUserWithEmailAndPassword(emailUser, passUser)
+      .then(() => {
+        const user = auth.currentUser;
+
+        user
+          .sendEmailVerification()
+          .then(function () {
+            // Email sent.
+          })
+          .catch(function (error) {
+            // An error happened.
+          });
+      })
       .catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
