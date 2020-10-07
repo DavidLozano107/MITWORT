@@ -51,7 +51,7 @@ function Routes() {
 
       {user === null && (
         <Switch>
-          <Route path="/" exact component={Login}></Route>
+          <Route path="/" component={Login}></Route>
         </Switch>
       )}
     </BrowserRouter>
