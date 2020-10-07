@@ -23,7 +23,7 @@ const Login = () => {
   return (
     <>
       <img className="wave" src={logo} alt="logo"></img>
-      <div className="container">
+      <div className="container-login">
         <div className="imagen">
           <img src={backImage} alt=""></img>
         </div>
