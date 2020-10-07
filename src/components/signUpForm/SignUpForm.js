@@ -162,10 +162,10 @@ export default withFormik({
   validate(values) {
     const errors = {};
 
-    if (values.firstName.length < 5) {
-      errors.firstName = "Error in the Name";
-    } else if (values.lastName.length < 5) {
-      errors.lastName = "Error in the last name";
+    if (/^([0-9])*$/.test(values.firstName)) {
+      errors.firstName = "Error. Only letters are allowed";
+    } else if (/^([0-9])*$/.test(values.lastName)) {
+      errors.lastName = "Error. Only letters are allowed";
     } else if (
       !/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(
         values.emailUser
@@ -178,6 +178,9 @@ export default withFormik({
       errors.passUser = "Password must be at least 8 characters";
     } else if (values.genderUser.length <= 4) {
       errors.genderUser = "Gender must be at least 5 or 6 characters";
+    } 
+    if(/^([0-9])*$/.test(values.genderUser)){
+      errors.genderUser = "Error. Only letters are allowed";
     }
     return errors;
   },
