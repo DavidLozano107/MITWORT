@@ -5,23 +5,27 @@ import { Link } from "react-router-dom";
 const NavbarCommunity = () => {
   return (
     <>
-      <div className="navbarCommunity d-flex flex-column ">
-        <div className="row ">
+      <div className="navbarCommunity d-flex flex-column " >
+        <div className="row-titulo">
           <div className="col text">
             <h1>Mis Comunidades</h1>
           </div>
         </div>
         <div className="container">
-          <div className="row ">
+          <div className="row">
             <div className="col">
               <div className="navbarCommunity-cardCommunity"></div>
             </div>
             <div className="col">
-              <div>
-                <Link to="/comunity">Communities</Link>
-              </div>
+              <div className="navbarCommunity-cardCommunity"></div>
+            </div>
+            <div className="col">
+              <div className="navbarCommunity-cardCommunity"></div>
             </div>
           </div>
+          <div className="seacrhCommunity">
+              <Link to="/comunity">Communities</Link>
+            </div>
         </div>
       </div>
     </>

@@ -1,31 +1,72 @@
-.navbarCommunity {
-  background: green;
-  padding: 1em;
-  border-radius: 55px;
-  position: absolute;
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.navbarCommunity.d-flex.flex-column{
+  position: fixed;
+  width: 24%;
+  height: 100vh;
+  background-color: rgb(0, 165, 41);
+  top: 0;
+  right: 0;
+  border-radius: 25px;
+}
+
+.row-titulo .col.text{
+  position: relative;
+  top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.row-titulo .col.text h1{
+  color: rgb(255, 255, 255);
+  font-size: 2.5em;
+  text-transform: uppercase;
+}
+
+
+.container .row{
+  position: relative;
+  top: 10px;
+  left: 15px;
+  width: 100%;
+  height: 89vh;
+}
+
+.container .row{
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.container .row .col{
+  position: relative;
+  top: 20px;
+  left: 20px;
   width: 90%;
-  height: 98vh;
-  overflow: auto;
+  height: 80%;
+  border-radius: 50px;
+  background-color: rgb(255, 255, 255);
 }
 
-.navbarCommunity-cardCommunity {
-  position: absolute;
-
-  width: 22em;
-  height: 15em;
-
-  background: #ffffff;
-  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 70px;
-  overflow: inherit;
-}
-.navbarCommunity .container {
-  grid-template-columns: none;
-  grid-gap: 0rem;
-  padding: 0 0rem;
+.container .seacrhCommunity{
+  position: relative;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.navbarCommunity .col {
-  margin-bottom: 0px;
-  padding-bottom: 0px;
+.container .seacrhCommunity a{
+  color: yellow;
+  font-size: 1.3em;
+  text-transform: uppercase;
 }

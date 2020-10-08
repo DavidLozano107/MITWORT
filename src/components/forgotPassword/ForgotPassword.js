@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withFormik, Field } from "formik";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
@@ -15,7 +14,6 @@ class ForgotPassword extends Component {
       errors,
       touched,
       status,
-      fieldValue,
     } = this.props;
 
     return (

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 //Pages
-import Page404 from "../pages/Page404";
+//import Page404 from "../pages/Page404"; <-- Mirar como importar esta pagina
 
 import { auth } from "../firebase-config";
 
