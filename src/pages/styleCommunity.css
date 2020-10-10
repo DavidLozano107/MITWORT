@@ -1,0 +1,44 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.containerPrincipalCommunity{
+  position: relative;
+  width: 100%;
+}
+
+.scrollCommunity{
+  overflow: hidden scroll;
+  padding: 16px;
+}
+
+.scrollCommunity{
+  height: 100%;
+}
+
+.sectionCommunity{
+  width: 100%;
+  margin-bottom: 32px;
+  min-width: 560px;
+}
+
+section{
+  display: block;
+}
+
+.titleComunnity{
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: black;
+  text-transform: uppercase;
+}
+
+.gridCategoryCommunity{
+  margin-top: 16px;
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(auto-fill,minmax(248px,1fr));
+}
