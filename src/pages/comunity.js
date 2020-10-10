@@ -1,6 +1,7 @@
 import React from "react";
 import "./styleCommunity.css";
 import CardCommunitty from "../components/cardCommunity";
+import { Link } from "react-router-dom";
 
 const Comunity = () => {
   return (
@@ -11,7 +12,9 @@ const Comunity = () => {
             <section className="sectionCommunity">
               <h3 className="titleComunnity">Comunidades Destacadas</h3>
               <div className="gridCategoryCommunity">
-                <CardCommunitty />
+                <Link to="comunity/id:1">
+                  <CardCommunitty />
+                </Link>
                 <CardCommunitty />
                 <CardCommunitty />
                 <CardCommunitty />

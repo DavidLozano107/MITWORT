@@ -15,6 +15,11 @@ import NewsFeed from "../pages/NewsFeed";
 import Comunity from "../pages/comunity";
 import Chat from "../components/chat";
 import NavChat from "../components/navChat";
+
+const Prueba = () => {
+  return <h1 className="text-center">Hello World!</h1>;
+};
+
 function Routes() {
   const [user, setUser] = React.useState(null);
 
@@ -37,33 +42,52 @@ function Routes() {
               <div className="col-sm-3">
                 <Navbar usuario={user} />
               </div>
-              <div className="col-sm-6">
-                <Switch>
-                  <Route path="/" exact>
-                    <NewsFeed usuario={user} />
-                  </Route>
-
-                  <Route path="/profile" component={ProfileUser} />
-                  <Route path="/chat" component={Chat} />
-                </Switch>
-              </div>
               <Switch>
-                <Route path="/comunity">
-                  <div className="col-sm-9 offset-md-3">
+                <Route path="/" exact>
+                  <div className="col-sm-6 ">
+                    <NewsFeed usuario={user} />
+                  </div>
+                </Route>
+                <Route path="/profile">
+                  <div className="col-sm-6 ">
+                    <ProfileUser />
+                  </div>
+                </Route>
+
+                <Route path="/chat">
+                  <div className="col-sm-6">
+                    <Chat />
+                  </div>
+                </Route>
+
+                <Route path="/comunity/id:1" exact>
+                  <div className="col-sm-9 ">
+                    <Prueba />
+                  </div>
+                </Route>
+                <Route path="/comunity" exact>
+                  <div className="col-sm-9 ">
                     <Comunity />
                   </div>
                 </Route>
               </Switch>
-              <div className="col-sm-3">
-                <Switch>
-                  <Route path="/" exact>
-                    <NavCommunity />
-                  </Route>
-                  <Route path="/chat" component={NavChat} />
-                  <Route path="/profile" component={NavCommunity} />
-                </Switch>
-              </div>
-              ;
+
+              <Route path="/" exact>
+                <div className="col-sm-3">
+                  <NavCommunity />
+                </div>
+              </Route>
+
+              <Route path="/chat">
+                <div className="col-sm-3">
+                  <NavChat />
+                </div>
+              </Route>
+              <Route path="/profile">
+                <div className="col-sm-3">
+                  <NavCommunity />
+                </div>
+              </Route>
             </div>
           </div>
         </>
