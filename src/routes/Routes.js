@@ -42,11 +42,18 @@ function Routes() {
                   <Route path="/" exact>
                     <NewsFeed usuario={user} />
                   </Route>
-                  <Route path="/comunity" component={Comunity} />
+
                   <Route path="/profile" component={ProfileUser} />
                   <Route path="/chat" component={Chat} />
                 </Switch>
               </div>
+              <Switch>
+                <Route path="/comunity">
+                  <div className="col-sm-9 offset-md-3">
+                    <Comunity />
+                  </div>
+                </Route>
+              </Switch>
               <div className="col-sm-3">
                 <Switch>
                   <Route path="/" exact>
@@ -56,6 +63,7 @@ function Routes() {
                   <Route path="/profile" component={NavCommunity} />
                 </Switch>
               </div>
+              ;
             </div>
           </div>
         </>
