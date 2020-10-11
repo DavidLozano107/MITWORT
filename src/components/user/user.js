@@ -1,10 +1,10 @@
 import React from "react";
 
-const index = ({ usuario }) => {
+const index = ({ user }) => {
   return (
     <div>
       <h1>Welcome</h1>
-      <p>Nombre : {usuario.email} </p>
+      <p>Nombre : {user.email} </p>
     </div>
   );
 };

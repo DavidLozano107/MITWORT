@@ -4,11 +4,9 @@ import Routes from "./routes/Routes";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Suspense fallback={"Conetando la app.."}>
-      <Routes />
-    </Suspense>
-  </React.StrictMode>,
+  <Suspense fallback={"Conetando la app.."}>
+    <Routes />
+  </Suspense>,
   document.getElementById("root")
 );
 

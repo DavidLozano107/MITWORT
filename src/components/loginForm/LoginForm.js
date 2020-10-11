@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { withFormik, Field } from "formik";
 
 import logoHome from "./img/avatarMit.svg";
@@ -6,7 +6,7 @@ import logoHome from "./img/avatarMit.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
-import { auth } from "../../firebase-config";
+import { auth, provider } from "../../firebase-config";
 
 const Login = (props) => {
   const {
@@ -19,7 +19,9 @@ const Login = (props) => {
     onForgotPasswortActive,
     status,
   } = props;
-
+  const SignUpGoogle = () => {
+    auth.signInWithPopup(provider);
+  };
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -82,6 +84,7 @@ const Login = (props) => {
           {status}
         </div>
       )}
+      <button onClick={SignUpGoogle}>Google</button>
     </div>
   );
 };

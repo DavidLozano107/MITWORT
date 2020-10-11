@@ -21,36 +21,39 @@ const Prueba = () => {
 };
 
 function Routes() {
-  const [user, setUser] = React.useState(null);
+  const [user, setUser] = React.useState(false);
 
   React.useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(null);
-      }
-    });
+    const consultarUsuario = () => {
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          setUser(user);
+        } else {
+          setUser(null);
+        }
+      });
+    };
+    consultarUsuario();
   }, []);
 
-  return (
+  return user !== false ? (
     <BrowserRouter>
       {user !== null && (
         <>
           <div className="container-fluid mt-2">
             <div className="row">
               <div className="col-sm-3">
-                <Navbar usuario={user} />
+                <Navbar user={user} />
               </div>
               <Switch>
                 <Route path="/" exact>
                   <div className="col-sm-6 ">
-                    <NewsFeed usuario={user} />
+                    <NewsFeed user={user} />
                   </div>
                 </Route>
                 <Route path="/profile">
                   <div className="col-sm-6 ">
-                    <ProfileUser />
+                    <ProfileUser user={user} />
                   </div>
                 </Route>
 
@@ -99,6 +102,8 @@ function Routes() {
         </Switch>
       )}
     </BrowserRouter>
+  ) : (
+    <h1>Cargando...</h1>
   );
 }
 

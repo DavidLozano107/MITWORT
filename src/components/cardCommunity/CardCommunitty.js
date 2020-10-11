@@ -1,6 +1,7 @@
 import React from "react";
 import "./cardCommunity.css";
-const CardCommunitty = () => {
+const CardCommunitty = ({ comunidadInfo }) => {
+  // const {name, description,photo } = props.comunidad;
   return (
     <div className="bodyCardCommunity">
       <div className="cardCommunity">
@@ -15,16 +16,16 @@ const CardCommunitty = () => {
         </div>
         <div className="boxInfoCommunity">
           <div className="titleCardCommunity">
-            <div className="titleCommunity">MINECRAFT</div>
+            <div className="titleCommunity">{comunidadInfo.name}</div>
           </div>
           <div className="biografyCardCommunity sizeBiografyCommunity">
-            Unete a la comunidad de de MINECRAFT más grande
+            {comunidadInfo.description}
           </div>
           <div className="membersOfCommunity">
             <div className="circleMembersCommunity"></div>
             <div className="countMembersCommunitty">30 Miembros</div>
             <div className="openCommunitty">
-              <button type="button" class="btn btn-outline-success">
+              <button type="button" className="btn btn-outline-success">
                 Ingresar
               </button>
             </div>

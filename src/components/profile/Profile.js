@@ -1,31 +1,148 @@
-import React from "react";
-import "./style.css";
+import React, { useEffect, useState } from "react";
 
-const Profile = () => {
+import { storage, db } from "../../firebase-config";
+
+import "./style.css";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  FormGroup,
+  Input,
+  Label,
+  Form,
+} from "reactstrap";
+
+const Profile = ({ user }) => {
+  const { displayName, email, photoURL } = user;
+
+  const [userDB, setUserDb] = useState({});
+
+  useEffect(() => {
+    const readData = async () => {
+      const userDB = await db.collection("usuarios").doc(email).get();
+      setUserDb(userDB.data());
+    };
+
+    readData();
+
+    return () => {};
+  }, []);
+
+  console.log(userDB);
+
+  const [abierto, setabierto] = useState(false);
+  const [modalExito, setmodalExito] = useState(false);
+
+  const opClModalExito = () => {
+    setmodalExito(!modalExito);
+  };
+
+  const atualizarPerfil = (e) => {
+    e.preventDefault();
+
+    const newName = e.target.children[1].children[1].value;
+    const newEmail = e.target.children[2].children[1].value;
+    const photo = e.target.children[0].children[1].files[0];
+
+    if (newName.length > 0) {
+      console.log("Has cambiando el nombre");
+      user
+        .updateProfile({
+          displayName: newName,
+        })
+        .then(async () => {
+          // Update successful.
+
+          await db.collection("usuarios").doc(user.email).update({
+            displayName: newName,
+          });
+          abrirModal();
+          opClModalExito();
+        })
+        .catch(function (error) {
+          // An error happened.
+        });
+    }
+    if (newEmail.length > 0) {
+      console.log("Has cambiando el email");
+
+      user
+        .updateEmail(newEmail)
+        .then(function () {
+          abrirModal();
+          opClModalExito();
+        })
+        .catch(function (error) {
+          // An error happened.
+        });
+    }
+    if (photo) {
+      console.log("Has cambiando el img");
+      let urlDescarga = "";
+      const atualizarImg = async () => {
+        const refImagen = storage.ref().child(email).child("fotoPerfil");
+        await refImagen.put(photo);
+        urlDescarga = await refImagen.getDownloadURL();
+
+        user
+          .updateProfile({
+            photoURL: urlDescarga,
+          })
+          .then(async function () {
+            await db.collection("usuarios").doc(email).update({
+              photoURL: urlDescarga,
+            });
+            abrirModal();
+            opClModalExito();
+          })
+          .catch(function (error) {
+            // An error happened.
+          });
+      };
+
+      atualizarImg();
+    }
+  };
+
+  const abrirModal = () => {
+    setabierto(!abierto);
+  };
+
+  const { banner } = userDB;
+  console.log(banner);
+  const bannerProfile = {
+    backgroundSize: "cover",
+    backgroundImage: `url(${banner})`,
+    backgroundRepeat: " no-repeat",
+  };
   return (
     <>
       <div className="row py-2 px-4">
         <div className="col mx-auto">
           {/* <!-- Profile widget --> */}
           <div className="bg-white shadow rounded overflow-hidden">
-            <div className="px-4 pt-0 pb-4 cover">
+            <div style={bannerProfile} className="px-4 pt-0 pb-4">
               <div className="media align-items-end profile-head">
                 <div className="profile mr-3">
                   <img
-                    src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
+                    src={photoURL}
                     alt="..."
                     width="130"
                     className="rounded mb-2 img-thumbnail"
                   />
-                  <button className="btn btn-outline-dark btn-sm btn-block">
+                  <button
+                    onClick={abrirModal}
+                    className="btn btn-outline-dark btn-sm btn-block"
+                  >
                     Edit profile
                   </button>
                 </div>
                 <div className="media-body mb-5 text-white">
-                  <h4 className="mt-0 mb-0">Mark Williams</h4>
-                  <p className="small mb-4">
-                    <i className="fas fa-map-marker-alt mr-2"></i>Ibague
-                  </p>
+                  <h4 className="mt-0 mb-0">{displayName}</h4>
+                  <p className="small mb-4">{userDB.location}</p>
                 </div>
               </div>
             </div>
@@ -53,11 +170,7 @@ const Profile = () => {
             </div>
             <div className="px-4 py-3">
               <h5 className="mb-0">About</h5>
-              <div className="p-4 rounded shadow-sm bg-light">
-                <p className="font-italic mb-0">Web Developer</p>
-                <p className="font-italic mb-0">Lives in Ibague</p>
-                <p className="font-italic mb-0">Javascript </p>
-              </div>
+              <div className="p-4 rounded shadow-sm bg-light">{userDB.bio}</div>
             </div>
             <div className="py-4 px-4">
               <div className="d-flex align-items-center justify-content-between mb-3">
@@ -100,57 +213,85 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+
+      <Modal isOpen={abierto}>
+        <ModalHeader>Edit profile</ModalHeader>
+        <ModalBody>
+          <Form onSubmit={atualizarPerfil}>
+            <FormGroup>
+              <Label for="img">Photo</Label>
+              <Input type="file" id="img" />
+            </FormGroup>
+            <FormGroup>
+              <Label for="usuario">Name: </Label>
+              <Input type="text" id="usuario" placeholder={displayName} />
+            </FormGroup>
+            <FormGroup>
+              <Label for="email">Email: </Label>
+              <Input type="email" id="email" placeholder={email} />
+            </FormGroup>
+            <FormGroup>
+              <Label for="usuario">Location: </Label>
+              <Input type="text" id="usuario" />
+            </FormGroup>
+            <FormGroup>
+              <Label for="exampleText">Bio: </Label>
+              <Input type="textarea" name="text" id="exampleText" />
+            </FormGroup>
+
+            <Button type="submit" color="primary">
+              Actualizar
+            </Button>
+          </Form>
+        </ModalBody>
+
+        <ModalFooter>
+          <Button onClick={abrirModal} color="danger">
+            Cancelar
+          </Button>
+        </ModalFooter>
+      </Modal>
+
+      <Modal isOpen={modalExito}>
+        <ModalHeader>Profile update</ModalHeader>
+        <ModalBody>
+          <div className="svg-container ModalSuccess">
+            <svg
+              className="ft-green-tick"
+              xmlns="http://www.w3.org/2000/svg"
+              height="100"
+              width="100"
+              viewBox="0 0 48 48"
+              aria-hidden="true"
+            >
+              <circle
+                className="circle"
+                fill="#5bb543"
+                cx="24"
+                cy="24"
+                r="22"
+              />
+              <path
+                className="tick"
+                fill="none"
+                stroke="#FFF"
+                strokeWidth="6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeMiterlimit="10"
+                d="M14 27l5.917 4.917L34 17"
+              />
+            </svg>
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <div className="mx-auto">
+            <Button onClick={opClModalExito} color="success">
+              salir
+            </Button>
+          </div>
+        </ModalFooter>
+      </Modal>
     </>
   );
 };

@@ -1,10 +1,12 @@
 import React from "react";
 import "./style.css";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { auth } from "../../firebase-config";
 
-const Navbar = ({ usuario }) => {
+const Navbar = ({ user }) => {
+  console.log(user);
+
   const cerrarSesion = () => {
     auth.signOut();
   };
@@ -28,16 +30,24 @@ const Navbar = ({ usuario }) => {
           <div className="navbar-navigation ">
             <ul>
               <li>
-                <NavLink exact to="/"><span className="MenuHome">Home</span></NavLink>
+                <NavLink exact to="/">
+                  <span className="MenuHome">Home</span>
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/profile"><span className="MenuProfile">Profile</span></NavLink>
+                <NavLink to="/profile">
+                  <span className="MenuProfile">Profile</span>
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/chat"><span className="MenuChat">Chat</span></NavLink>
+                <NavLink to="/chat">
+                  <span className="MenuChat">Chat</span>
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/comunity"><span className="MenuCommunity">Communities</span></NavLink>
+                <NavLink to="/comunity">
+                  <span className="MenuCommunity">Communities</span>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -45,20 +55,25 @@ const Navbar = ({ usuario }) => {
         <div className="perfil">
           <div className="row">
             <div className="col-4">
-              <img
-                className="img-fluid rounded-circle "
-                src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
-                alt="Avatar"
-              />
+              <Link to="/profile">
+                <img
+                  className="img-fluid rounded-circle "
+                  src={user.photoURL}
+                  alt="Avatar"
+                />
+              </Link>
             </div>
             <div className="col-4 perfil">
-              <p className="perfil-name">{usuario.email}</p>
+              <Link to="/profile">
+                <p className="perfil-name">{user.displayName}</p>
+              </Link>
             </div>
             <div className="col-4 logOut">
               <button
                 className="btn btn-dark perfil-btn"
                 onClick={() => cerrarSesion()}
-              >Cerrar Sesión
+              >
+                Cerrar Sesión
               </button>
             </div>
           </div>

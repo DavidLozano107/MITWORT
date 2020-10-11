@@ -1,6 +1,6 @@
 import React from "react";
 import { withFormik, Field } from "formik";
-import { auth } from "../../firebase-config";
+import { auth, db, firebase, provider, storage } from "../../firebase-config";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -20,6 +20,27 @@ const SignUpForm = (props) => {
     touched,
     errorMessage,
   } = props;
+
+  const SignUpGoogle = async () => {
+    await auth.signInWithPopup(provider);
+
+    var user = await firebase.auth().currentUser;
+
+    await db.collection("usuarios").doc(user.email).set({
+      createdAt: Date.now(),
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      email: user.user,
+      banner:
+        "https://www.acemetrix.com/wp-content/themes/acemetrix/images/default/default-black-banner.png",
+      uid: user.uid,
+      location: "write any location",
+      bio: "write about you",
+      photos: 0,
+      Followeres: 0,
+      Following: 0,
+    });
+  };
 
   return (
     <>
@@ -139,6 +160,7 @@ const SignUpForm = (props) => {
           >
             Sign Up
           </button>
+          <button onClick={SignUpGoogle}>Google</button>
         </form>
       </div>
     </>
@@ -178,41 +200,77 @@ export default withFormik({
       errors.passUser = "Password must be at least 8 characters";
     } else if (values.genderUser.length <= 4) {
       errors.genderUser = "Gender must be at least 5 or 6 characters";
-    } 
-    if(/^([0-9])*$/.test(values.genderUser)){
+    }
+    if (/^([0-9])*$/.test(values.genderUser)) {
       errors.genderUser = "Error. Only letters are allowed";
     }
     return errors;
   },
 
-  handleSubmit(values, formikBag) {
+  async handleSubmit(values, formikBag) {
     formikBag.setSubmitting(false);
     console.log(values);
 
-    const { emailUser, passUser } = values;
+    const { emailUser, passUser, lastName, firstName } = values;
 
-    auth
-      .createUserWithEmailAndPassword(emailUser, passUser)
-      .then(() => {
-        const user = auth.currentUser;
+    const crearUsuario = async () => {
+      await auth
+        .createUserWithEmailAndPassword(emailUser, passUser)
+        .then((user) => {
+          user = firebase.auth().currentUser;
 
-        user
-          .sendEmailVerification()
-          .then(function () {
-            // Email sent.
-          })
-          .catch(function (error) {
-            var errorMessage = error.message;
+          db.collection("usuarios")
+            .doc(emailUser)
+            .set({
+              createdAt: Date.now(),
+              displayName: firstName + " " + lastName,
+              photoURL:
+                "https://s.gravatar.com/avatar/3e197a4860c827259fa152f1df317bf4?s=80",
+              email: emailUser,
+              banner:
+                "https://wikitravel.org/upload/shared/6/6a/Default_Banner.jpg",
+              uid: user.uid,
+              location: "write any location",
+              bio: "write about you",
+              photos: 0,
+              Followeres: 0,
+              Following: 0,
+            });
 
-            return errorMessage;
-          });
-      })
-      .catch(function (error) {
-        // Handle Errors here.
-        //var errorCode = error.code;        <---- REVISAR
-        var errorMessage = error.message;
-        console.log(errorMessage);
-        // ...
-      });
+          user
+            .updateProfile({
+              displayName: firstName + " " + lastName,
+              photoURL:
+                "https://s.gravatar.com/avatar/3e197a4860c827259fa152f1df317bf4?s=80",
+              email: emailUser,
+              uid: user.uid,
+            })
+            .then(function () {
+              // Update successful.
+            })
+            .catch(function (error) {
+              // An error happened.
+            });
+
+          console.log(user);
+          user
+            .sendEmailVerification()
+            .then(function () {
+              // Email sent.
+            })
+            .catch(function (error) {
+              var errorMessage = error.message;
+              return errorMessage;
+            });
+        })
+        .catch(function (error) {
+          // Handle Errors here.
+          //var errorCode = error.code;        <---- REVISAR
+          var errorMessage = error.message;
+          console.log(errorMessage);
+          // ...
+        });
+    };
+    crearUsuario();
   },
 })(SignUpForm);
