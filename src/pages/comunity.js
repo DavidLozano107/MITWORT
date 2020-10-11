@@ -7,6 +7,7 @@ import { db } from "../firebase-config";
 const Comunity = () => {
   // const [comunities, setComunities] = useState([]);
   const [comunityPrueba, setcomunityPrueba] = useState({});
+  const comunidadDbPrubea = [];
 
   useEffect(() => {
     const readData = async () => {
@@ -18,13 +19,17 @@ const Comunity = () => {
         return;
       }
 
-      snapshotBd.forEach((doc) => {
+      await snapshotBd.forEach((doc) => {
+        comunidadDbPrubea.push(doc.data());
         console.log(doc.id, "=>", doc.data());
       });
     };
 
     readData();
   }, []);
+
+  console.log(comunidadDbPrubea);
+
   return (
     <>
       <div className="containerPrincipalCommunity">
