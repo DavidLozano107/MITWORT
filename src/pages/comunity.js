@@ -6,7 +6,7 @@ import { db } from "../firebase-config";
 
 const Comunity = () => {
   // const [comunities, setComunities] = useState([]);
-  const [comunityPrueba, setcomunityPrueba] = useState([]);
+  const [comunityPrueba, setcomunityPrueba] = useState(null);
   const comunidadDbPrubea = [];
 
   useEffect(() => {
@@ -19,17 +19,18 @@ const Comunity = () => {
         return;
       }
 
-      snapshotBd.forEach((doc) => {
+      await snapshotBd.forEach((doc) => {
         comunidadDbPrubea.push(doc.data());
-
-        setcomunityPrueba({ comunidadDbPrubea });
       });
+      setcomunityPrueba([...comunidadDbPrubea]);
     };
 
-    readData();
-  }, []);
+    const leeDatos = async () => {
+      await readData();
+    };
 
-  console.log(comunidadDbPrubea);
+    leeDatos();
+  }, []);
 
   return (
     <>
@@ -39,9 +40,13 @@ const Comunity = () => {
             <section className="sectionCommunity">
               <h3 className="titleComunnity">Comunidades Destacadas</h3>
               <div className="gridCategoryCommunity">
-                {comunityPrueba.map((comunidad) => (
-                  <h1>{comunidad.name} </h1>
-                ))}
+                {comunityPrueba !== null ? (
+                  comunityPrueba.map((item) => (
+                    <CardCommunitty key={item.name} comunidadInfo={item} />
+                  ))
+                ) : (
+                  <h1>Cargando</h1>
+                )}
               </div>
             </section>
           </div>

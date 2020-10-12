@@ -24,16 +24,16 @@ const SignUpForm = (props) => {
   const SignUpGoogle = async () => {
     await auth.signInWithPopup(provider);
 
-    var user = await firebase.auth().currentUser;
+    var userGoogle = await firebase.auth().currentUser;
 
-    await db.collection("usuarios").doc(user.email).set({
+    db.collection("usuarios").doc(userGoogle.email).set({
       createdAt: Date.now(),
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      email: user.user,
+      displayName: userGoogle.displayName,
+      photoURL: userGoogle.photoURL,
+      email: userGoogle.email,
       banner:
         "https://www.acemetrix.com/wp-content/themes/acemetrix/images/default/default-black-banner.png",
-      uid: user.uid,
+      uid: userGoogle.uid,
       location: "write any location",
       bio: "write about you",
       photos: 0,

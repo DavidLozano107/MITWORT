@@ -1,7 +1,7 @@
 import React from "react";
 import "./cardCommunity.css";
 const CardCommunitty = ({ comunidadInfo }) => {
-  // const {name, description,photo } = props.comunidad;
+  const { name, description, photo } = comunidadInfo;
   return (
     <div className="bodyCardCommunity">
       <div className="cardCommunity">
@@ -16,10 +16,10 @@ const CardCommunitty = ({ comunidadInfo }) => {
         </div>
         <div className="boxInfoCommunity">
           <div className="titleCardCommunity">
-            <div className="titleCommunity">{comunidadInfo.name}</div>
+            <div className="titleCommunity">{name}</div>
           </div>
           <div className="biografyCardCommunity sizeBiografyCommunity">
-            {comunidadInfo.description}
+            {description}
           </div>
           <div className="membersOfCommunity">
             <div className="circleMembersCommunity"></div>
