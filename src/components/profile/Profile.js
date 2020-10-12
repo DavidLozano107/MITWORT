@@ -29,7 +29,7 @@ const Profile = ({ user }) => {
     readData();
 
     return () => {};
-  }, []);
+  }, [user]);
 
   console.log(userDB);
 
@@ -40,12 +40,15 @@ const Profile = ({ user }) => {
     setmodalExito(!modalExito);
   };
 
-  const atualizarPerfil = (e) => {
+  const atualizarPerfil = async (e) => {
     e.preventDefault();
 
+    const photo = e.target.children[0].children[1].files[0];
     const newName = e.target.children[1].children[1].value;
     const newEmail = e.target.children[2].children[1].value;
-    const photo = e.target.children[0].children[1].files[0];
+    const location = e.target.children[3].children[1].value;
+    const bio = e.target.children[4].children[1].value;
+    console.log(location, bio);
 
     if (newName.length > 0) {
       console.log("Has cambiando el nombre");
@@ -105,6 +108,21 @@ const Profile = ({ user }) => {
 
       atualizarImg();
     }
+
+    if (location.length > 0) {
+      await db.collection("usuarios").doc(user.email).update({
+        location: location,
+      });
+      abrirModal();
+      opClModalExito();
+    }
+    if (bio.length > 0) {
+      await db.collection("usuarios").doc(user.email).update({
+        bio: bio,
+      });
+      abrirModal();
+      opClModalExito();
+    }
   };
 
   const abrirModal = () => {
@@ -149,19 +167,25 @@ const Profile = ({ user }) => {
             <div className="bg-light p-4 d-flex justify-content-end text-center">
               <ul className="list-inline mb-0">
                 <li className="list-inline-item">
-                  <h5 className="font-weight-bold mb-0 d-block">7</h5>
+                  <h5 className="font-weight-bold mb-0 d-block">
+                    {userDB.photos}
+                  </h5>
                   <small className="text-muted">
                     <i className="fas fa-image mr-1"></i>Photos
                   </small>
                 </li>
                 <li className="list-inline-item">
-                  <h5 className="font-weight-bold mb-0 d-block">10</h5>
+                  <h5 className="font-weight-bold mb-0 d-block">
+                    {userDB.Followeres}
+                  </h5>
                   <small className="text-muted">
                     <i className="fas fa-user mr-1"></i>Followers
                   </small>
                 </li>
                 <li className="list-inline-item">
-                  <h5 className="font-weight-bold mb-0 d-block">2020</h5>
+                  <h5 className="font-weight-bold mb-0 d-block">
+                    {userDB.Following}
+                  </h5>
                   <small className="text-muted">
                     <i className="fas fa-user mr-1"></i>Following
                   </small>
@@ -232,11 +256,16 @@ const Profile = ({ user }) => {
             </FormGroup>
             <FormGroup>
               <Label for="usuario">Location: </Label>
-              <Input type="text" id="usuario" />
+              <Input type="text" id="usuario" placeholder={userDB.location} />
             </FormGroup>
             <FormGroup>
               <Label for="exampleText">Bio: </Label>
-              <Input type="textarea" name="text" id="exampleText" />
+              <Input
+                type="textarea"
+                name="text"
+                id="exampleText"
+                placeholder={userDB.bio}
+              />
             </FormGroup>
 
             <Button type="submit" color="primary">
