@@ -46,6 +46,7 @@ const NavbarCommunity = () => {
     // await db.collection("Comunity").doc(name).collection("info");
 
     let CommunityRef = db.collection("comunities").doc(name);
+    
 
     await CommunityRef.set({
       createdAt: Date.now(),
@@ -95,7 +96,7 @@ const NavbarCommunity = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="description">description</Label>
+            <Label for="description">Description</Label>
             <Input
               onChange={handleChangeInput}
               type="text"
@@ -115,10 +116,10 @@ const NavbarCommunity = () => {
         </ModalBody>
         <ModalFooter>
           <Button onClick={createComunity} color="primary">
-            crear
+            Crear
           </Button>
           <Button onClick={opClModal} color="danger">
-            cancelar
+            Cancelar
           </Button>
         </ModalFooter>
       </Modal>
@@ -158,7 +159,7 @@ const NavbarCommunity = () => {
         <ModalFooter>
           <div className="mx-auto">
             <Button onClick={opClModalExito} color="success">
-              salir
+              Salir
             </Button>
           </div>
         </ModalFooter>

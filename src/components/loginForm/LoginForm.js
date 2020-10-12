@@ -84,7 +84,7 @@ const Login = (props) => {
           {status}
         </div>
       )}
-      <button onClick={SignUpGoogle}>Google</button>
+      <button className="registerWithGoogle" onClick={SignUpGoogle}>Google</button>
     </div>
   );
 };

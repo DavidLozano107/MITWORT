@@ -212,6 +212,23 @@ button:hover {
   cursor: no-drop;
 }
 
+.registerWithGoogle{
+  background: linear-gradient(45deg,#3ebe15, #8eb920, #c5be1a, #e09230, #eb4925);
+  outline: none;
+  border-radius: 20px;
+  padding: 15px 30px;
+  font-size: 25px;
+  text-shadow: 1px 1px 1px black;
+}
+
+.registerWithGoogle:hover{
+  color: #fff;
+  box-shadow: 
+  inset 0 -3em 3em rgba(62,190,21,0.2), 
+  0 0  0 1px rgb(197,190,26),
+  0.3em 0.3em 1em rgba(235,73,37,0.9);
+}
+
 /*-------------------*/
 
 @media (max-width: 1450px) {

@@ -160,7 +160,7 @@ const SignUpForm = (props) => {
           >
             Sign Up
           </button>
-          <button onClick={SignUpGoogle}>Google</button>
+          <button className="registerWithGoogle" onClick={SignUpGoogle}>Google</button>
         </form>
       </div>
     </>

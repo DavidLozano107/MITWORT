@@ -32,6 +32,8 @@ const Comunity = () => {
     leeDatos();
   }, []);
 
+  console.log(comunityPrueba)
+
   return (
     <>
       <div className="containerPrincipalCommunity">
@@ -42,7 +44,7 @@ const Comunity = () => {
               <div className="gridCategoryCommunity">
                 {comunityPrueba !== null ? (
                   comunityPrueba.map((item) => (
-                    <CardCommunitty key={item.name} comunidadInfo={item} />
+                    <CardCommunitty key={item.createdAt} comunidadInfo={item} />
                   ))
                 ) : (
                   <h1>Cargando</h1>
