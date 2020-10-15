@@ -141,7 +141,7 @@ const Profile = ({ user }) => {
   };
 
   const { banner } = userDB;
-  console.log(banner);
+  //console.log(banner);
   const bannerProfile = {
     backgroundSize: "cover",
     backgroundImage: `url(${banner})`,

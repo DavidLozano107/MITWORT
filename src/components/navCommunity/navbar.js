@@ -10,13 +10,13 @@ import {
   FormGroup,
   Input,
   Label,
+  Form
 } from "reactstrap";
 
-import { db } from "../../firebase-config";
+import { db, storage } from "../../firebase-config";
 
 const NavbarCommunity = () => {
   const initialStateValue = {
-    photo: "",
     name: "",
     description: "",
   };
@@ -39,22 +39,38 @@ const NavbarCommunity = () => {
     setValues({ ...values, [name]: value });
   };
 
-  const createComunity = async () => {
+  const createComunity = async (e) => {
+    e.preventDefault()
     console.log(values);
     const { name } = values;
-
+    const photo = e.target.children[2].children[1].files[0]
     // await db.collection("Comunity").doc(name).collection("info");
 
     let CommunityRef = db.collection("comunities").doc(name);
+
+      
+    //console.log("Has cambiando el img");
+    let urlDescarga = "";
+    const atualizarImg = async () => {
+    const refImagen = storage.ref().child(name).child("photoCommunity");
+    await refImagen.put(photo);
+    urlDescarga = await refImagen.getDownloadURL();
+    console.log(urlDescarga)
+    };
+    atualizarImg();
+
+    setTimeout( async () => {
+      await CommunityRef.set({
+        createdAt: Date.now(),
+        ...values,
+        members: 0,
+        photo: urlDescarga
+      });
+  
+      opClModal();
+      opClModalExito();
+    }, 3000);
     
-
-    await CommunityRef.set({
-      createdAt: Date.now(),
-      ...values,
-    });
-
-    opClModal();
-    opClModalExito();
   };
 
   return (
@@ -86,6 +102,7 @@ const NavbarCommunity = () => {
       <Modal isOpen={modal}>
         <ModalHeader>Crea una comunidad</ModalHeader>
         <ModalBody>
+          <Form onSubmit={createComunity}>
           <FormGroup>
             <Label for="name">Name</Label>
             <Input
@@ -113,11 +130,12 @@ const NavbarCommunity = () => {
               name="photo"
             />
           </FormGroup>
-        </ModalBody>
-        <ModalFooter>
-          <Button onClick={createComunity} color="primary">
+          <Button type="submit" color="primary">
             Crear
           </Button>
+          </Form>
+        </ModalBody>
+        <ModalFooter>
           <Button onClick={opClModal} color="danger">
             Cancelar
           </Button>

@@ -32,7 +32,7 @@ const Comunity = () => {
     leeDatos();
   }, []);
 
-  console.log(comunityPrueba)
+  //console.log(comunityPrueba)
 
   return (
     <>

@@ -7,7 +7,7 @@ import { auth } from "../../firebase-config";
 import { db } from "../../firebase-config";
 
 const Navbar = ({ user }) => {
-  console.log(user);
+  //console.log(user);
 
   const { email } = user;
 
