@@ -39,6 +39,7 @@ const SignUpForm = (props) => {
       photos: 0,
       Followeres: 0,
       Following: 0,
+      company: false,
     });
   };
 
@@ -235,6 +236,7 @@ export default withFormik({
               photos: 0,
               Followeres: 0,
               Following: 0,
+              company: false,
             });
 
           user

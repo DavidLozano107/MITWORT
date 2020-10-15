@@ -29,15 +29,22 @@ const Profile = ({ user }) => {
     readData();
 
     return () => {};
-  }, [user]);
-
-  console.log(userDB);
+  }, [user, email]);
 
   const [abierto, setabierto] = useState(false);
   const [modalExito, setmodalExito] = useState(false);
+  const [modalUpdateCompny, setmodalUpdateCompny] = useState(false);
 
   const opClModalExito = () => {
     setmodalExito(!modalExito);
+  };
+
+  const updateCompanyMode = async () => {
+    await db.collection("usuarios").doc(user.email).update({
+      company: true,
+    });
+    setmodalUpdateCompny(!modalUpdateCompny);
+    opClModalExito();
   };
 
   const atualizarPerfil = async (e) => {
@@ -127,6 +134,10 @@ const Profile = ({ user }) => {
 
   const abrirModal = () => {
     setabierto(!abierto);
+  };
+  const abrirModalEmpresa = async () => {
+    setabierto(!abierto);
+    setmodalUpdateCompny(!modalUpdateCompny);
   };
 
   const { banner } = userDB;
@@ -269,14 +280,34 @@ const Profile = ({ user }) => {
             </FormGroup>
 
             <Button type="submit" color="primary">
-              Actualizar
+              Update
             </Button>
           </Form>
         </ModalBody>
 
         <ModalFooter>
           <Button onClick={abrirModal} color="danger">
-            Cancelar
+            Cancel
+          </Button>
+          <Button onClick={abrirModalEmpresa} color="warning">
+            Company mode
+          </Button>
+        </ModalFooter>
+      </Modal>
+
+      <Modal isOpen={modalUpdateCompny}>
+        <ModalHeader>
+          <h2>Are you sure you want your profile as a company?</h2>
+        </ModalHeader>
+        <ModalBody>
+          <p>
+            The company mode gives you control over your publications and gives
+            you some tools for your marketing projects
+          </p>
+        </ModalBody>
+        <ModalFooter>
+          <Button onClick={updateCompanyMode} color="warning">
+            Uptade to companyMode
           </Button>
         </ModalFooter>
       </Modal>
@@ -313,6 +344,7 @@ const Profile = ({ user }) => {
             </svg>
           </div>
         </ModalBody>
+
         <ModalFooter>
           <div className="mx-auto">
             <Button onClick={opClModalExito} color="success">
