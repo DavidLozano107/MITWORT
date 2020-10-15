@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 
 import { NavLink, Link } from "react-router-dom";
 import { auth } from "../../firebase-config";
 
+import { db } from "../../firebase-config";
+
 const Navbar = ({ user }) => {
   console.log(user);
+
+  const { email } = user;
+
+  const [userDB, setUserDb] = useState({});
+
+  useEffect(() => {
+    const readData = async () => {
+      const userDB = await db.collection("usuarios").doc(email).get();
+      setUserDb(userDB.data());
+    };
+
+    readData();
+
+    return () => {};
+  }, [user]);
 
   const cerrarSesion = () => {
     auth.signOut();
@@ -49,6 +66,13 @@ const Navbar = ({ user }) => {
                   <span className="MenuCommunity">Communities</span>
                 </NavLink>
               </li>
+              {userDB.company === true && (
+                <li>
+                  <NavLink to="/comunity">
+                    <span className="MenuCommunity">Company</span>
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </div>
         </div>
