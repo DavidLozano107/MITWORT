@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./styleCommunity.css";
 import CardCommunitty from "../components/cardCommunity";
-import { Link } from "react-router-dom";
+import SearchCommunity from "../components/searchCommunity"
 import { db } from "../firebase-config";
 
 const Comunity = () => {
@@ -38,12 +38,14 @@ const Comunity = () => {
     <>
       <div className="containerPrincipalCommunity">
         <div className="scrollCommunity">
+          <SearchCommunity/>
           <div>
             <section className="sectionCommunity">
               <h3 className="titleComunnity">Comunidades Destacadas</h3>
               <div className="gridCategoryCommunity">
                 {comunityPrueba !== null ? (
                   comunityPrueba.map((item) => (
+                    console.log(item),
                     <CardCommunitty key={item.createdAt} comunidadInfo={item} />
                   ))
                 ) : (

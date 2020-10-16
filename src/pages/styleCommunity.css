@@ -9,13 +9,116 @@
 }
 
 .scrollCommunity{
-  overflow: hidden scroll;
+  overflow: hidden ;
   padding: 16px;
 }
 
 .scrollCommunity{
   height: 100%;
 }
+
+.menuCommunity{
+  position: relative;
+  margin-bottom: 32px;
+  min-height: 200px;
+}
+
+.headerImageCommunity{
+  display: inherit;
+  border-radius: 8px;
+  width: 100%;
+  height: auto
+}
+
+.menuCommunityInterior{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.contentMenuCommunity{
+  width: 100%;
+  min-width: 360px;
+  max-width: 720px;
+  margin: 0 240px;
+}
+
+.titleMenuCommunity{
+  color: #fff;
+  font-size: 25px;
+  line-height: 30px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.biografyMenuCommunity{
+  font-size: 14px;
+  color: #fff;
+  margin-top: 8px;
+  line-height: 20px
+}
+
+.containerSearchCommunity{
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 16px;
+}
+
+.searchCommunity{
+  width: 100%;
+  max-width: 560px;
+  position: relative;
+  margin: auto auto 16px;
+}
+
+.searchBoxCommunity{
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 18px;
+  padding-right: 16px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  z-index: 2;
+  border-radius: 8px;
+  background-color: #fff;
+  padding-right: 8px;
+}
+
+.inputSearchCommunity{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.inputSearch{
+  font-size: 16px;
+  padding: 8px;
+  color: #2e3338;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 12px;
+  background: transparent;
+  height: auto;
+  padding: 10px;
+  height: 40px;
+}
+
 
 .sectionCommunity{
   width: 100%;
@@ -41,4 +144,8 @@ section{
   display: grid;
   grid-gap: 16px;
   grid-template-columns: repeat(auto-fill,minmax(248px,1fr));
+}
+
+section .gridCategoryCommunity a{
+  text-decoration: none;
 }

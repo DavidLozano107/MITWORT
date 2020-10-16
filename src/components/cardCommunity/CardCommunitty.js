@@ -1,25 +1,16 @@
 import React from "react";
 import "./cardCommunity.css";
-const CardCommunitty = ({ comunidadInfo }) => {
-  const { name, description, photo, members } = comunidadInfo;
-
-
-
-
-
-
-
-
-
+const CardCommunitty = ({ comunidadInfo}) => {
+  const { createdAt, name, description, photo, members } = comunidadInfo;
 
   return (
-    <div className="bodyCardCommunity">
+    <div className="bodyCardCommunity" key={createdAt}>
       <div className="cardCommunity">
         <div className="cardHeaderCommunity">
           <div className="cardImageBox">
             <img
               src={photo}
-              alt="Minecraft"
+              alt={name}
               className="boxImageCard"
             ></img>
           </div>
