@@ -69,7 +69,7 @@ const NavbarCommunity = () => {
   
       opClModal();
       opClModalExito();
-    }, 3000);
+    }, 2500);
     
   };
 

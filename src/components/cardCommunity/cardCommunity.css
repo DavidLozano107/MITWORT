@@ -10,7 +10,7 @@
   -ms-flex-direction: column;
   flex-direction: column;
   height: 320px;
-  width: 120%;
+  width: 100%;
   overflow: hidden;
   border-radius: 8px;
 }
@@ -21,7 +21,7 @@
   position: relative;
   height: 143px;
   overflow: visible;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 }
 
 .bodyCardCommunity, .cardImageBox{
@@ -117,5 +117,5 @@
 }
 
 .openCommunitty{
-  margin-left: 80px;
+  margin-left: 60px;
 }
