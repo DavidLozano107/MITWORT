@@ -147,6 +147,10 @@ div.rowLista div.navbar-navigation ul li .active span.MenuCommunity:hover{
   height: 10%;
 }
 
+.perfil .row .col-4.perfil a{
+  text-decoration: none;
+}
+
 .perfil .row .col-4.perfil p.perfil-name{
   font-size: 1.3em;
   color: #fff;

@@ -1,5 +1,8 @@
 import React from "react";
 import "./cardCommunity.css";
+import {Link} from "react-router-dom";
+
+
 const CardCommunitty = ({ comunidadInfo}) => {
   const { createdAt, name, description, photo, members } = comunidadInfo;
 
@@ -26,9 +29,11 @@ const CardCommunitty = ({ comunidadInfo}) => {
             <div className="circleMembersCommunity"></div>
             <div className="countMembersCommunitty">{members} Miembros</div>
             <div className="openCommunitty">
-              <button type="button" className="btn btn-outline-success">
-                Ingresar
-              </button>
+              <Link to={`/comunity/${createdAt}`}>
+                <button type="button" className="btn btn-outline-success">
+                  Ingresar
+                </button>
+              </Link>
             </div>
           </div>
         </div>

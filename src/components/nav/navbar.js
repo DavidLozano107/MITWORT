@@ -57,11 +57,6 @@ const Navbar = ({ user }) => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/chat">
-                  <span className="MenuChat">Chat</span>
-                </NavLink>
-              </li>
-              <li>
                 <NavLink to="/comunity">
                   <span className="MenuCommunity">Communities</span>
                 </NavLink>
