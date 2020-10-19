@@ -45,8 +45,12 @@ const NavbarCommunity = () => {
     const { name } = values;
     const photo = e.target.children[2].children[1].files[0]
     // await db.collection("Comunity").doc(name).collection("info");
+    
+    const p = Date.now().toString(16)
 
-    let CommunityRef = db.collection("comunities").doc(name);
+    const id = p
+
+    let CommunityRef = db.collection("comunities").doc(id);
 
       
     //console.log("Has cambiando el img");
@@ -61,7 +65,7 @@ const NavbarCommunity = () => {
 
     setTimeout( async () => {
       await CommunityRef.set({
-        createdAt: Date.now(),
+        createdAt: id,
         ...values,
         members: 0,
         photo: urlDescarga

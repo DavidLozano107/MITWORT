@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Pagina from "../pages/Page404";
+import OpenCommunity from "../components/openCommunity"
 
 //Pages
 //import Page404 from "../pages/Page404"; <-- Mirar como importar esta pagina
@@ -14,10 +15,23 @@ import NavCommunity from "../components/navCommunity";
 
 import NewsFeed from "../pages/NewsFeed";
 import Comunity from "../pages/comunity";
+import userEvent from "@testing-library/user-event";
 
-const Prueba = () => {
+const Prueba = (props) => {
+  
+  useEffect(() => {
+    const { match: { params } } = props;
+    console.log(params);
+    return () => {
+
+    }
+  }, [])
+
+
+
   return <h1 className="text-center">Hello World!</h1>;
 };
+
 
 function Routes() {
   const [user, setUser] = React.useState(false);
@@ -58,7 +72,7 @@ function Routes() {
 
                 <Route path="/comunity/:id" exact>
                   <div className="col-sm-9 ">
-                    <Prueba />
+                    <OpenCommunity />
                   </div>
                 </Route>
                 <Route path="/comunity" exact>

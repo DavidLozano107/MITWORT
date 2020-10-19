@@ -10,7 +10,7 @@ import { db } from "../firebase-config";
 const Comunity = () => {
   // const [comunities, setComunities] = useState([]);
   const [comunityPrueba, setcomunityPrueba] = useState(null);
-  const [com, setCom] = useState("")
+  const [com, setCom] = useState("");
 
   const comunidadDbPrubea = [];
 
@@ -26,6 +26,7 @@ const Comunity = () => {
 
       await snapshotBd.forEach((doc) => {
         comunidadDbPrubea.push(doc.data());
+        console.log(doc.id);
       });
       setcomunityPrueba([...comunidadDbPrubea]);
     };
