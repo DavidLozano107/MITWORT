@@ -1,9 +1,8 @@
 import React from "react";
 import "./cardCommunity.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-
-const CardCommunitty = ({ comunidadInfo}) => {
+const CardCommunitty = ({ comunidadInfo }) => {
   const { createdAt, name, description, photo, members } = comunidadInfo;
 
   return (
@@ -11,11 +10,7 @@ const CardCommunitty = ({ comunidadInfo}) => {
       <div className="cardCommunity">
         <div className="cardHeaderCommunity">
           <div className="cardImageBox">
-            <img
-              src={photo}
-              alt={name}
-              className="boxImageCard"
-            ></img>
+            <img src={photo} alt={name} className="boxImageCard"></img>
           </div>
         </div>
         <div className="boxInfoCommunity">

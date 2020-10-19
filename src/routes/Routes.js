@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Pagina from "../pages/Page404"
+import Pagina from "../pages/Page404";
 
 //Pages
 //import Page404 from "../pages/Page404"; <-- Mirar como importar esta pagina
@@ -14,8 +14,6 @@ import NavCommunity from "../components/navCommunity";
 
 import NewsFeed from "../pages/NewsFeed";
 import Comunity from "../pages/comunity";
-
-
 
 const Prueba = () => {
   return <h1 className="text-center">Hello World!</h1>;
@@ -58,7 +56,7 @@ function Routes() {
                   </div>
                 </Route>
 
-                <Route path="/comunity/1602885039788" exact>
+                <Route path="/comunity/:id" exact>
                   <div className="col-sm-9 ">
                     <Prueba />
                   </div>
@@ -81,8 +79,6 @@ function Routes() {
                   <NavCommunity />
                 </div>
               </Route>
-
-
             </div>
           </div>
         </>
