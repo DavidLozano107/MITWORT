@@ -22,15 +22,15 @@ const NavbarCommunity = () => {
   };
   const [values, setValues] = useState(initialStateValue);
 
-  const [modal, setmodal] = useState(false);
+  const [modal, setModal] = useState(false);
 
   const opClModal = () => {
-    setmodal(!modal);
+    setModal(!modal);
   };
-  const [modalExito, setmodalExito] = useState(false);
+  const [modalExito, setModalExito] = useState(false);
 
   const opClModalExito = () => {
-    setmodalExito(!modalExito);
+    setModalExito(!modalExito);
   };
 
   const handleChangeInput = (e) => {

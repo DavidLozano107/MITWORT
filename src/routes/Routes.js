@@ -72,7 +72,7 @@ function Routes() {
 
                 <Route path="/comunity/:id" exact>
                   <div className="col-sm-9 ">
-                    <OpenCommunity />
+                    <OpenCommunity user={user} />
                   </div>
                 </Route>
                 <Route path="/comunity" exact>
