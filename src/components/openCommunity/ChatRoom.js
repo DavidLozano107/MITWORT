@@ -9,7 +9,11 @@ const ChatRoom = ({ user }) => {
 
   console.log(user);
 
-  const messageRef = db.collection('messages')
+    // ------ Parametro Id con la cual se capturo el createdAt de la comunidad
+    let { id } = useParams();
+    //-------------------------------------------------------------------
+
+  const messageRef = db.collection('comunities').doc(id).collection('messages');
 
   const query = messageRef.orderBy('createdAt').limit(25);
 
@@ -46,9 +50,6 @@ const ChatRoom = ({ user }) => {
   const [datos, setDatos] = useState(false);
   //---------------------------------------------
 
-  // ------ Parametro Id con la cual se capturo el createdAt de la comunidad
-  let { id } = useParams();
-  //-------------------------------------------------------------------
     
   // Carga de Datos---------------------
   useEffect(() => {
