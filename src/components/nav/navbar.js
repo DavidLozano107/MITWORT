@@ -61,7 +61,7 @@ const Navbar = ({ user }) => {
                   <span className="MenuCommunity">Communities</span>
                 </NavLink>
               </li>
-              {//userDB.company === true && Crea error al momento de que otro perfil no tiene activado la compañia
+              {userDB.company === true && 
                 <li>
                   <NavLink to="/comunity">
                     <span className="MenuCommunity">Company</span>
