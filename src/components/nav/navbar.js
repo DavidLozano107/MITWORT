@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faUser, faGlobeAmericas, faAddressBook } from "@fortawesome/free-solid-svg-icons";
+
 import "./style.css";
 
 import { NavLink, Link } from "react-router-dom";
@@ -48,23 +51,23 @@ const Navbar = ({ user }) => {
             <ul>
               <li>
                 <NavLink exact to="/">
-                  <span className="MenuHome">Home</span>
+                  <span className="MenuHome"><FontAwesomeIcon icon={faHome}/> Home</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/profile">
-                  <span className="MenuProfile">Profile</span>
+                  <span className="MenuProfile"><FontAwesomeIcon icon={faUser}/> Profile</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/comunity">
-                  <span className="MenuCommunity">Communities</span>
+                  <span className="MenuCommunity"><FontAwesomeIcon icon={faGlobeAmericas}/> Communities</span>
                 </NavLink>
               </li>
               {userDB.company === true && 
                 <li>
                   <NavLink to="/comunity">
-                    <span className="MenuCommunity">Company</span>
+                    <span className="MenuCommunity"><FontAwesomeIcon icon={faAddressBook}/> Company</span>
                   </NavLink>
                 </li>
               }

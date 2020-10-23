@@ -62,7 +62,6 @@ body{
 
 .rowLista ul li span{
   font-size: 2.5em;
-  text-transform: uppercase;
   color: #fff; /*Por el Momento las letras del Menu son Blancas*/
   transition: 0.5s all linear;
 }
@@ -140,7 +139,7 @@ div.rowLista div.navbar-navigation ul li .active span.MenuCommunity:hover{
   background-color: rgba(31, 126, 124, 0.0);
 }
 .perfil .row .col-4.perfil{
-  top: 20px;
+  top: 10px;
 }
 
 .perfil div.col-4.perfil{
@@ -152,12 +151,12 @@ div.rowLista div.navbar-navigation ul li .active span.MenuCommunity:hover{
 }
 
 .perfil .row .col-4.perfil p.perfil-name{
-  font-size: 1.3em;
+  font-size: 1.1em;
   color: #fff;
 }
 
 .perfil .row .col-4.logOut{
-  top: 50px;
+  top: 15px;
 }
 
 .perfil .row .col-4.logOut button.btn.btn-dark.perfil-btn{

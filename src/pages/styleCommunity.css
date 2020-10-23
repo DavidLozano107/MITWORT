@@ -48,7 +48,7 @@
 .contentMenuCommunity{
   width: 100%;
   min-width: 360px;
-  max-width: 720px;
+  max-width: 740px;
   margin: 0 240px;
 }
 
@@ -56,16 +56,18 @@
   color: #fff;
   font-size: 25px;
   line-height: 30px;
-  font-weight: 600;
+  font-weight: 800;
   text-align: center;
   text-transform: uppercase;
+  text-shadow: 1px 1px 5px black;
 }
 
 .biografyMenuCommunity{
   font-size: 14px;
   color: #fff;
   margin-top: 8px;
-  line-height: 20px
+  line-height: 20px;
+  text-shadow: 1px 1px 5px black;
 }
 
 .containerSearchCommunity{
@@ -131,8 +133,8 @@ section{
 }
 
 .titleComunnity{
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 30px;
+  line-height: 30px;
   font-weight: 600;
   margin: 0;
   color: black;
@@ -143,7 +145,7 @@ section{
   margin-top: 16px;
   display: grid;
   grid-gap: 16px;
-  grid-template-columns: repeat(auto-fill,minmax(248px,1fr));
+  grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
 }
 
 section .gridCategoryCommunity a{

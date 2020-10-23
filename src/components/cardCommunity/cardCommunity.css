@@ -117,5 +117,7 @@
 }
 
 .openCommunitty{
-  margin-left: 60px;
+  position: relative;
+  top: 0;
+  left: 100px;
 }

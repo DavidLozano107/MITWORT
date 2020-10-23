@@ -94,11 +94,11 @@ const NavbarCommunity = () => {
               <div className="navbarCommunity-cardCommunity"></div>
             </div>
             <div className="col">
-              <button onClick={opClModal}>Agregar una comunidad</button>
+              
             </div>
           </div>
           <div className="seacrhCommunity">
-            <Link to="/comunity">Communities</Link>
+            <button className="createCommunity" onClick={opClModal}>Create Community</button>       
           </div>
         </div>
       </div>

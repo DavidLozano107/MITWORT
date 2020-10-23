@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./styleCommunity.css";
 import CardCommunitty from "../components/cardCommunity";
-import logo from "./img/menuCommunityy.jpg";
+import logo from "./img/comunidad.jpg";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import SearchCommunity from "../components/searchCommunity"
