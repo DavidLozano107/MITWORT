@@ -84,13 +84,13 @@ function Routes() {
 
               <Route path="/" exact>
                 <div className="col-sm-3">
-                  <NavCommunity />
+                  <NavCommunity user={user}/>
                 </div>
               </Route>
 
               <Route path="/profile">
                 <div className="col-sm-3">
-                  <NavCommunity />
+                  <NavCommunity user={user}/>
                 </div>
               </Route>
             </div>

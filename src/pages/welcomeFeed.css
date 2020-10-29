@@ -1,0 +1,17 @@
+.containerPrincipalNewFeed{
+  position: relative;
+  width: 100%;
+}
+
+.menuNewFeed{
+  position: relative;
+  margin-bottom: 32px;
+  min-height: 200px;
+}
+
+.headerImageNewFeed{
+  display: inherit;
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+}

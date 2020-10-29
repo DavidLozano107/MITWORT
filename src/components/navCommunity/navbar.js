@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 import {
@@ -15,7 +15,26 @@ import {
 
 import { db, storage } from "../../firebase-config";
 
-const NavbarCommunity = () => {
+const NavbarCommunity = ({ user }) => {
+
+  console.log(user);
+  const { email } = user; 
+  
+
+  const [userDB, setUserDb] = useState({});
+
+  useEffect(() => {
+    const readData = async () => {
+      const userDB = await db.collection("usuarios").doc(email).get();
+      setUserDb(userDB.data());
+    };
+
+    readData();
+
+    return () => {};
+  }, [user]);
+
+
   const initialStateValue = {
     name: "",
     description: "",
@@ -73,7 +92,7 @@ const NavbarCommunity = () => {
   
       opClModal();
       opClModalExito();
-    }, 2500);
+    }, 3000);
     
   };
 
@@ -82,7 +101,7 @@ const NavbarCommunity = () => {
       <div className="navbarCommunity d-flex flex-column ">
         <div className="row-titulo">
           <div className="col text">
-            <h1>Mis Comunidades</h1>
+            <h1>Comunidades</h1>
           </div>
         </div>
         <div className="container">
@@ -98,7 +117,10 @@ const NavbarCommunity = () => {
             </div>
           </div>
           <div className="seacrhCommunity">
-            <button className="createCommunity" onClick={opClModal}>Create Community</button>       
+            <button className="createCommunity" onClick={opClModal}>Create Community</button>
+            { userDB.company === true &&
+            <button className="createCompany">To Post</button>  
+            }      
           </div>
         </div>
       </div>

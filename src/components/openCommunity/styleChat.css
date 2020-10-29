@@ -124,15 +124,15 @@ main::-webkit-scrollbar-thumb {
   border-radius: 40px;
 }
 
+.btnSubmitChat:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .btnSubmitChat:hover{
   box-shadow: 2px 2px 5px rgb(190, 250, 208);
   background-color: rgb(195, 0, 255);
   color: #fff;
-}
-
-.btnSubmitChat:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
 
