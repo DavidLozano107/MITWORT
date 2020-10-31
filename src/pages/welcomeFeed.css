@@ -1,17 +1,316 @@
-.containerPrincipalNewFeed{
+.sectionNewFeedFlex{
+  padding-top: 30px;
+  /*
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  */
+  display: flex;
+  /*
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  */
+  flex-flow: row nowrap;
+  max-width: 1090px;
+}
+
+.newFeedCenter{
+  /*
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  */
+  flex-grow: 1;
+  margin: 0 auto;
+  max-width: 750px;
   position: relative;
   width: 100%;
 }
 
-.menuNewFeed{
-  position: relative;
-  margin-bottom: 32px;
-  min-height: 200px;
+.directionNewFeed{
+  flex-direction: column;
+  padding-bottom: 15200px;
+  width: 100%;
 }
 
-.headerImageNewFeed{
-  display: inherit;
-  border-radius: 8px;
-  width: 100%;
-  height: auto;
+.articleSizePost{
+  margin-bottom: 20px;
+  border-radius: 3px;
 }
+
+.userPostNewFeed{
+  display: flex;
+  /*
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  */
+  align-items: center;
+  /*
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  */
+  flex-direction: row;
+  height: 60px;
+  padding: 16px;
+  box-sizing: border-box;
+  border: 1px solid rgb(202, 202, 202);
+}
+
+.photoUserPostNewFeed2{
+  /*
+  display: block;
+  /*
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  */
+  height: fit-content;
+  /*
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  */
+  /*
+  width: fit-content;
+  */
+}
+
+.photoUserPostNewFeed{
+  position: relative;
+}
+
+
+.photoUser{
+  /*
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  */
+  align-items: center;
+  /*
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  */
+  align-self: center;
+  display: block;
+  /*
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  -ms-flex: none;
+  */
+  flex: none;
+  /*
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  */
+  justify-content: center;
+}
+
+.vewPhotoUser{
+  width: 32px;
+  height: 32px;
+  background-color: #fafafa;
+  border-radius: 50%;
+  /*
+  -webkit-box-sizing: border-box;
+  */
+  box-sizing: border-box;
+  display: block;
+  /*
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  */
+  flex: 0 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo{
+  width: 100%;
+  height: 100%;
+}
+
+.nameUserPostNewFeedContainer2{
+  margin-left: 14px;
+}
+
+
+.nameUserPostNewFeedContainer{
+  /*
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  */
+  align-items: flex-start;
+  /*
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  */
+  display: flex;
+  /*
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  */
+  flex-grow: 1;
+  /*
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  */
+  margin-left: 12px;
+  flex-shrink: 1;
+  overflow: hidden;
+}
+
+.nameUserPost{
+  max-width: 310px;
+  /*
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  */
+  align-items: stretch;
+  border: 0 solid #000;
+  /*
+  -webkit-box-sizing: border-box;
+  */
+  box-sizing: border-box;
+  /* display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox; */
+  display: flex;
+  /* -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column; */
+  flex-direction: column;
+  /* -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0; */
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.name{
+  /*
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  */
+  align-items: center;
+  /* -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row; */
+  flex-direction: row;
+  /* -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1; */
+  flex-grow: 1;
+  /* -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1; */
+  flex-shrink: 1;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 2px;
+  top: 1px;
+}
+
+.nameUser{
+  position: relative;
+  color: #262626;
+  border: 0;
+  display: inline;
+  padding: 0;
+  position: relative;
+}
+
+.imagePostUserNewFeed{
+  position: relative;
+  touch-action: manipulation;
+}
+
+.imagePostContainer{
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.imagePostUser{
+  background-color: #efefef;
+  display: block;
+  width: 100%;
+}
+
+.imageSizeUser{
+  padding-bottom: 124.907%;
+  display: block;
+  overflow: hidden;
+  padding-bottom: 100%;
+}
+
+.imagePost{
+  object-fit: cover;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100%;
+  /* border-radius: 30px; */
+}
+
+.stopImage{
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------- article, header -------------------- {
+  align-items: stretch;
+  box-sizing: border-box;  POSICIONAMIENTO DE LAS LETRAS
+  display: flex;
+  position: relative;
+} -------------------------------------------------------- */
+

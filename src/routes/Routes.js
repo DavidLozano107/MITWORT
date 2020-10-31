@@ -61,7 +61,7 @@ function Routes() {
               <Switch>
                 <Route path="/" exact>
                   <div className="col-sm-6 ">
-                    <NewsFeed user={user} />
+                    <NewsFeed user={user}/>
                   </div>
                 </Route>
                 <Route path="/profile">

@@ -1,6 +1,6 @@
 
 .informationCommunityChat{
-  background-color: rgb(75, 163, 147);;
+  background-color: rgb(18, 77, 109);
   border-radius: 50px;
 }
 
@@ -130,8 +130,8 @@ main::-webkit-scrollbar-thumb {
 }
 
 .btnSubmitChat:hover{
-  box-shadow: 2px 2px 5px rgb(190, 250, 208);
-  background-color: rgb(195, 0, 255);
+  box-shadow: 2px 2px 5px rgb(145, 27, 175);
+  background-color: rgb(103, 29, 126);
   color: #fff;
 }
 

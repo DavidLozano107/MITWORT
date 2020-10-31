@@ -13,7 +13,7 @@ import {
   Form
 } from "reactstrap";
 
-import { db, storage } from "../../firebase-config";
+import { db, storage, firebase } from "../../firebase-config";
 
 const NavbarCommunity = ({ user }) => {
 
@@ -35,18 +35,83 @@ const NavbarCommunity = ({ user }) => {
   }, [user]);
 
 
+  const initialStateValueCompany = {
+    descripcion: "",
+  };
+
+
+
+  const [valuesCompany, setValuesCompany] = useState(initialStateValueCompany)
+
+  /* ---------------------- Modal Company ---------------------- */
+  const [modalCompany, setModalCompany] = useState(false);
+
+  const opCLModalCompany = () =>{
+    setModalCompany(!modalCompany)
+  }
+
+  const [modalExitoCompany, setModalExitoCompany] = useState(false);
+
+  const opClModalExitoCompany = () =>{
+    setModalExitoCompany(!modalExitoCompany);
+  }
+
+  const handleChangeInputCompany = (e) => {
+    // const {descripcion, value} = e.target;
+    setValuesCompany({...valuesCompany,[e.target.name]: e.target.value});
+    console.log(e.target.value);
+  }
+
+   /*---------- Crear Post para el que tiene el rol de Company -------------------*/
+   const createCompany = async (e) => {
+    e.preventDefault();
+    console.log(valuesCompany);
+    const photoCompany = e.target.children[1].children[1].files[0]
+
+    console.log(photoCompany);
+    
+    let CompanyRef = db.collection("post").doc(email).collection("postUser");
+
+    let urlDescargaCompany = "";
+    const actualizarImagenCompany = async () => {
+      const refImagenCompany = storage.ref().child(email).child("Post").child(new Date().toString());
+      await refImagenCompany.put(photoCompany);
+      urlDescargaCompany = await refImagenCompany.getDownloadURL();
+      console.log(urlDescargaCompany);
+    };
+    actualizarImagenCompany();
+
+    setTimeout( async () => {
+      await CompanyRef.add({
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        ...valuesCompany,
+        photoCompany: urlDescargaCompany
+      })
+  
+      opCLModalCompany();
+      opClModalExitoCompany();
+    }, 8000);
+
+  };
+
+
+  /*-------------------------------------------------------------------------*/
+
+
+  /* ------------------------------------------------------------- */
   const initialStateValue = {
     name: "",
     description: "",
   };
+
   const [values, setValues] = useState(initialStateValue);
 
   const [modal, setModal] = useState(false);
+  const [modalExito, setModalExito] = useState(false);
 
   const opClModal = () => {
     setModal(!modal);
   };
-  const [modalExito, setModalExito] = useState(false);
 
   const opClModalExito = () => {
     setModalExito(!modalExito);
@@ -64,7 +129,7 @@ const NavbarCommunity = ({ user }) => {
     const { name } = values;
     const photo = e.target.children[2].children[1].files[0]
     // await db.collection("Comunity").doc(name).collection("info");
-    
+
     const p = Date.now().toString(16)
 
     const id = p
@@ -96,6 +161,11 @@ const NavbarCommunity = ({ user }) => {
     
   };
 
+ 
+
+
+
+
   return (
     <>
       <div className="navbarCommunity d-flex flex-column ">
@@ -119,7 +189,7 @@ const NavbarCommunity = ({ user }) => {
           <div className="seacrhCommunity">
             <button className="createCommunity" onClick={opClModal}>Create Community</button>
             { userDB.company === true &&
-            <button className="createCompany">To Post</button>  
+            <button className="createCompany" onClick={opCLModalCompany}>To Post</button>  
             }      
           </div>
         </div>
@@ -208,6 +278,83 @@ const NavbarCommunity = ({ user }) => {
           </div>
         </ModalFooter>
       </Modal>
+
+      {/*-------------- Modal Company ---------------------------*/}
+      <Modal isOpen={modalCompany}>
+        <ModalHeader>Crea una Post para las New Feeds</ModalHeader>
+        <ModalBody>
+          <Form onSubmit={createCompany}>
+          <FormGroup>
+            <Label for="descripcion">Description</Label>
+            <Input
+              onChange={handleChangeInputCompany}
+              type="text"
+              id="descripcion"
+              name="descripcion"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="img">Photo</Label>
+            <Input
+              onChange={handleChangeInputCompany}
+              type="file"
+              id="img"
+              name="photoCompany"
+            />
+          </FormGroup>
+          <Button type="submit" color="primary">
+            Crear
+          </Button>
+          </Form>
+        </ModalBody>
+        <ModalFooter>
+          <Button onClick={opCLModalCompany} color="danger">
+            Cancelar
+          </Button>
+        </ModalFooter>
+      </Modal>
+
+      <Modal isOpen={modalExitoCompany}>
+        <ModalHeader>Post Creado con Exito</ModalHeader>
+        <ModalBody>
+          <div className="svg-container ModalSuccess">
+            <svg
+              className="ft-green-tick"
+              xmlns="http://www.w3.org/2000/svg"
+              height="100"
+              width="100"
+              viewBox="0 0 48 48"
+              aria-hidden="true"
+            >
+              <circle
+                className="circle"
+                fill="#5bb543"
+                cx="24"
+                cy="24"
+                r="22"
+              />
+              <path
+                className="tick"
+                fill="none"
+                stroke="#FFF"
+                strokeWidth="6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeMiterlimit="10"
+                d="M14 27l5.917 4.917L34 17"
+              />
+            </svg>
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <div className="mx-auto">
+            <Button onClick={opClModalExitoCompany} color="success">
+              Salir
+            </Button>
+          </div>
+        </ModalFooter>
+      </Modal>
+
     </>
   );
 };

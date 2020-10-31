@@ -42,7 +42,7 @@ const Navbar = ({ user }) => {
           >
             <path
               d="M0.00,49.98 C131.20,274.83 271.49,-49.98 559.53,147.53 L500.00,0.00 L0.00,0.00 Z"
-              style={{ stroke: "none", fill: "#63D6C1" }}
+              style={{ stroke: "none", fill: "rgb(5, 84, 102)" }}
             ></path>
           </svg>
         </div>

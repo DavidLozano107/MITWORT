@@ -15,7 +15,7 @@ body{
   position: fixed;
   width: 24%;
   height: 100vh;
-  background-color: rgb(68, 190, 255);
+  background-color: rgb(1, 141, 199);
   top: 0;
   left: 0;
   border-radius: 25px;
@@ -61,7 +61,7 @@ body{
 }
 
 .rowLista ul li span{
-  font-size: 2.5em;
+  font-size: 2.3em;
   color: #fff; /*Por el Momento las letras del Menu son Blancas*/
   transition: 0.5s all linear;
 }
@@ -71,7 +71,9 @@ div.rowLista div.navbar-navigation ul li .active{
   background-color: rgba(255, 255, 255, 0.0);
 }
 
-/*-------------- Menu Home -----------------------------------*/
+/*
+
+/*-------------- Menu Home -----------------------------------*
 div.rowLista div.navbar-navigation ul li .active span.MenuHome{
   background-color: rgba(255, 255, 255, 0.0);
 }
@@ -79,11 +81,11 @@ div.rowLista div.navbar-navigation ul li .active span.MenuHome{
 div.rowLista div.navbar-navigation ul li:hover .active span.MenuHome:hover{
   background-color: rgba(255, 255, 255, 0.0);
   color: yellow;
-  font-size: 3em;
+  transform: scale(1.3);
 }
 /*-------------- Menu Home -----------------------------------*/
 
-/*-------------- Menu Profile -----------------------------------*/
+/*-------------- Menu Profile -----------------------------------*
 
 div.rowLista div.navbar-navigation ul li .active span.MenuProfile{
   background-color: rgba(255, 255, 255, 0.0);
@@ -94,10 +96,10 @@ div.rowLista div.navbar-navigation ul li .active span.MenuProfile:hover{
   font-size: 3em;
   color: rgb(255, 145, 2);
 }
-/*-------------- Menu Profile -----------------------------------*/
+/*-------------- Menu Profile -----------------------------------*
 
 
-/*-------------- Menu Chat -----------------------------------*/
+/*-------------- Menu Chat -----------------------------------*
 div.rowLista div.navbar-navigation ul li .active span.MenuChat{
   background-color: rgba(255, 255, 255, 0.0);
 }
@@ -111,7 +113,7 @@ div.rowLista div.navbar-navigation ul li .active span.MenuChat:hover{
 
 
 
-/*-------------- Menu Community -----------------------------------*/
+/*-------------- Menu Community -----------------------------------*
 div.rowLista div.navbar-navigation ul li .active span.MenuCommunity{
   background-color: rgba(255, 255, 255, 0.0);
 }
@@ -121,7 +123,7 @@ div.rowLista div.navbar-navigation ul li .active span.MenuCommunity:hover{
   font-size: 3em;
   color: rgb(255, 0, 0);
 }
-/*-------------- Menu Community -----------------------------------*/
+/*-------------- Menu Community -----------------------------------
 
 
 
