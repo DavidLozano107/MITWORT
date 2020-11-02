@@ -84,7 +84,7 @@ const Comunity = () => {
                     console.log(item),
                     <CardCommunitty key={item.createdAt} comunidadInfo={item} />
                   ))
-                ) : (
+                ) : ( 
                   <h1>Cargando...</h1>
                 )}
               </div>

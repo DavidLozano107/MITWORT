@@ -31,7 +31,7 @@
 
 .directionNewFeed{
   flex-direction: column;
-  padding-bottom: 15200px;
+  padding-bottom: 0 auto;
   width: 100%;
 }
 
@@ -229,7 +229,6 @@
   border: 0;
   display: inline;
   padding: 0;
-  position: relative;
 }
 
 .imagePostUserNewFeed{
@@ -285,6 +284,124 @@
   right: 0;
   top: 0;
 }
+
+
+.footerNewFeed{
+  display: flex;
+  /*
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  */
+  align-items: center;
+  /*
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  */
+  flex-direction: row;
+  height: 60px;
+  padding: 16px;
+  box-sizing: border-box;
+  border: 1px solid rgb(202, 202, 202);
+  border-top: none;
+}
+
+.descriptionNewFeed{
+    /*
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  */
+  display: flex;
+  align-items: flex-start;
+  /*
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  */
+  flex-grow: 1;
+  /*
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  */
+  margin-left: 12px;
+  flex-shrink: 1;
+  overflow: hidden;
+}
+
+.description{
+    /*
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  */
+  align-items: center;
+  /* -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row; */
+  flex-direction: row;
+  /* -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1; */
+  flex-grow: 1;
+  /* -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1; */
+  flex-shrink: 1;
+  max-width: 80%;
+  overflow: hidden;
+  padding: 2px;
+  top: 1px;
+}
+
+.descriptionUser{
+  position: relative;
+  color: #262626;
+  border: 0;
+  display: inline;
+  padding: 0;
+}
+
+
+button.likePost.empty{
+  color: #cccccc;
+  font-size: 2em;
+  outline: none;
+}
+
+button.likePost.full{
+  color: #ff0000;
+  font-size: 2em;
+  outline: none;
+}
+
+
+
+button.dontLikePost.emptyDontLike{
+  color: #cccccc;
+  font-size: 2em;
+  outline: none;
+}
+
+button.dontLikePost.fullDontLike{
+  color: #1b1177;
+  font-size: 2em;
+  outline: none;
+}
+
+
+
+
+
+
+
+
+
 
 
 

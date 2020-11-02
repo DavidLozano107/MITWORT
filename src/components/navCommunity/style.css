@@ -60,13 +60,35 @@ body {
   top: 0px;
   width: 100%;
   height: auto;
-  text-align: center;
 }
 
+.container .seacrhCommunity{
+  display: flex;
+  justify-content: center;
+  margin: 5px auto;
+}
+
+
 .container .seacrhCommunity .createCommunity{
-  color: rgb(238, 255, 0);
+  position: relative;
+  top: -5px;
+  right: 10px;
+  color: #F6D55C;
+  outline: none;
   font-size: 1em;
-  text-transform: uppercase;
+  text-shadow: 1px 0px 0px #000;
+  margin-bottom: 20px;
+}
+
+.container .seacrhCommunity .createCompany{
+  position: relative;
+  top: -5px;
+  left: 10px;;
+  color: #E3553B;
+  outline: none;
+  font-size: 1em;
+  text-shadow: 1px 0px 0px #000;
+  margin-bottom: 20px;
 }
 
 
