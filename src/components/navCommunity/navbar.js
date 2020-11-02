@@ -90,7 +90,7 @@ const NavbarCommunity = ({ user }) => {
       await CompanyRef.set({
         createdAt: idCompany,
         ...valuesCompany,
-        photo: urlDescargaCompany,
+        photoCompany: urlDescargaCompany,
         photoUser: photoURL,
         userName: displayName,
         userId: uid,
