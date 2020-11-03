@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Pagina from "../pages/Page404";
-import OpenCommunity from "../components/openCommunity"
+import OpenCommunity from "../components/openCommunity";
 
 //Pages
 //import Page404 from "../pages/Page404"; <-- Mirar como importar esta pagina
@@ -15,23 +15,20 @@ import NavCommunity from "../components/navCommunity";
 
 import NewsFeed from "../pages/NewsFeed";
 import Comunity from "../pages/comunity";
+import Dashboard from "../pages/Dashboard";
 import userEvent from "@testing-library/user-event";
 
 const Prueba = (props) => {
-  
   useEffect(() => {
-    const { match: { params } } = props;
+    const {
+      match: { params },
+    } = props;
     console.log(params);
-    return () => {
-
-    }
-  }, [])
-
-
+    return () => {};
+  }, []);
 
   return <h1 className="text-center">Hello World!</h1>;
 };
-
 
 function Routes() {
   const [user, setUser] = React.useState(false);
@@ -61,7 +58,7 @@ function Routes() {
               <Switch>
                 <Route path="/" exact>
                   <div className="col-sm-6 ">
-                    <NewsFeed user={user}/>
+                    <NewsFeed user={user} />
                   </div>
                 </Route>
                 <Route path="/profile">
@@ -80,17 +77,22 @@ function Routes() {
                     <Comunity />
                   </div>
                 </Route>
+                <Route path="/dashboard" exact>
+                  <div className="col-sm-9 ">
+                    <Dashboard />
+                  </div>
+                </Route>
               </Switch>
 
               <Route path="/" exact>
                 <div className="col-sm-3">
-                  <NavCommunity user={user}/>
+                  <NavCommunity user={user} />
                 </div>
               </Route>
 
               <Route path="/profile">
                 <div className="col-sm-3">
-                  <NavCommunity user={user}/>
+                  <NavCommunity user={user} />
                 </div>
               </Route>
             </div>
