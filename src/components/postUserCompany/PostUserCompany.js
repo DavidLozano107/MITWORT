@@ -9,9 +9,12 @@ const PostUserCompany = (props) => {
   const {poster} = props;
   
   const [countInfoPost, setInfoPost] = useState({});
+  const [countDisLike, setDisLike] = useState({})
+
   const [countLike, setCountLike] = useState(countInfoPost.userLikes);
   const [userLike, setUserLike] = useState(false);
-  const [countDontLike, setCountDontLike] = useState(0);
+  const [userDontLike, setUserDontLike] = useState(false);
+  const [countDontLike, setCountDontLike] = useState(countDisLike.userDislikes);
   
   useEffect(() => {
     const readData = async () => {
@@ -27,6 +30,7 @@ const PostUserCompany = (props) => {
         // comunidadDbPrubea.push(doc.data());
         console.log(doc.data());
         setInfoPost(doc.data());
+        setDisLike(doc.data());
         console.log(doc.id);
       });
     };
@@ -36,13 +40,13 @@ const PostUserCompany = (props) => {
     };
 
     leeDatos();
-  }, [countLike, userLike])
+  }, [countLike, userLike, countDontLike, userDontLike])
 
   
 
   const postClass = countInfoPost.userLikes >= 1 ? 'full' : 'empty';
 
-  const postClassDontLike = countDontLike >= 1 ? 'fullDontLike' : 'emptyDontLike';
+  const postClassDontLike = countDisLike.userDislikes >= 1 ? 'fullDontLike' : 'emptyDontLike';
 
 
 
@@ -53,6 +57,17 @@ const actualizarLikes = () =>{
   }else{
     db.collection("post").doc(poster.createdAt).update({userLikes: poster.userLikes -= 1})
     setUserLike(false)
+  }
+}
+
+
+const actualizarDontLikes = () =>{
+  if (!userDontLike) {
+    db.collection("post").doc(poster.createdAt).update({userDislikes: poster.userDislikes += 1})
+    setUserDontLike(true)
+  }else{
+    db.collection("post").doc(poster.createdAt).update({userDislikes: poster.userDislikes -= 1})
+    setUserDontLike(false)
   }
 }
 
@@ -79,7 +94,7 @@ const actualizarLikes = () =>{
           <div className="imagePostContainer">
             <div className="imagePostUser">
               <div className="imageSizeUser">
-                <img className="imagePost" src={poster.photo} alt="Imagen"></img>
+                <img className="imagePost" src={poster.photoCompany} alt="Imagen"></img>
               </div>
               <div className="stopImage"></div>
             </div>
@@ -96,9 +111,9 @@ const actualizarLikes = () =>{
             onClick={() => actualizarLikes()}>
             <FontAwesomeIcon icon={faHeart}/>
             </button>
-            <span>{countDontLike}</span>
+            <span>{countDisLike.userDislikes}</span>
             <button className={`dontLikePost ${postClassDontLike}`} 
-            onClick={() => setCountDontLike(countDontLike + 1)}>
+            onClick={() => actualizarDontLikes()}>
             <FontAwesomeIcon icon={faThumbsDown}/>
             </button>
         </footer>

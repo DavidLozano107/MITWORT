@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import PhotoUserProfile from "../photoUserProfile/PhotoUserProfile";
 
-import { storage, db } from "../../firebase-config";
+import { storage, db, firebase } from "../../firebase-config";
 
 import "./style.css";
 import {
@@ -16,9 +17,11 @@ import {
 } from "reactstrap";
 
 const Profile = ({ user }) => {
-  const { displayName, email, photoURL } = user;
-
+  const { displayName, email, photoURL, uid } = user;
   const [userDB, setUserDb] = useState({});
+  const [gallery, setGallery] = useState([]);
+
+  const userGallery = [];
 
   useEffect(() => {
     const readData = async () => {
@@ -28,12 +31,43 @@ const Profile = ({ user }) => {
 
     readData();
 
+    /*--------- ---  Leer datos de Gallery ------------------------------------------*/
+
+    const readDataGallery = async () => {
+      const citiesRef = db.collection("uploadPhoto").where("email", "==", email);
+
+      const snapshotBd = await citiesRef.get();
+      if (snapshotBd.empty) {
+        console.log("No matching documents.");
+        return;
+      }
+
+      await snapshotBd.forEach((doc) => {
+        userGallery.push(doc.data());
+      });
+      setGallery([...userGallery]);
+    };
+
+    const leeDatosGallery = async () => {
+      await readDataGallery();
+    };
+
+    leeDatosGallery();
+    /**------------------------------------------------------------------------------ */
     return () => {};
   }, [user, email]);
+
 
   const [abierto, setabierto] = useState(false);
   const [modalExito, setmodalExito] = useState(false);
   const [modalUpdateCompny, setmodalUpdateCompny] = useState(false);
+
+  /* ------- Estados de modal para las fotos del Usuario   ---------------*/
+
+  const [uploadPhoto, setUpLoadPhoto] = useState(false);
+  const [uploadPhotoExito, setUpLoadExito] = useState(false);
+
+  /** ------------------------------------------------------------------- */
 
   const opClModalExito = () => {
     setmodalExito(!modalExito);
@@ -142,11 +176,67 @@ const Profile = ({ user }) => {
 
   const { banner } = userDB;
   //console.log(banner);
+
   const bannerProfile = {
     backgroundSize: "cover",
     backgroundImage: `url(${banner})`,
     backgroundRepeat: " no-repeat",
   };
+
+  /* ----  Fotos del Usuario para Gallery ---------------- */
+  const abrirModalUploadUser = () => {
+    setUpLoadPhoto(!uploadPhoto);
+  };
+
+  const abrirModalUploadUserExito = () => {
+    setUpLoadExito(!uploadPhotoExito);
+  };
+
+  const uploadPhotoUser = (e) => {
+    e.preventDefault();
+
+    const upload = e.target.children[0].children[1].files[0];
+
+    const idUploadPhoto = Date.now().toString(16);
+
+    let UploadRefStorage = db
+      .collection("uploadPhoto")
+      .doc(email)
+      .collection("uploadPhotoUser");
+      
+    let UploadRef = db.collection("uploadPhoto").doc(idUploadPhoto);
+
+    let urlDescargaUploadPhoto = "";
+
+    const uploadImageUser = async () => {
+      const refImagenPhotoUpload = storage
+        .ref()
+        .child(email)
+        .child("Gallery")
+        .child(new Date().toString());
+      await refImagenPhotoUpload.put(upload);
+      urlDescargaUploadPhoto = await refImagenPhotoUpload.getDownloadURL();
+      console.log(urlDescargaUploadPhoto);
+    };
+    uploadImageUser();
+
+    setTimeout(async () => {
+      await UploadRef.set({
+        createdAt: idUploadPhoto,
+        email: email,
+        upload: urlDescargaUploadPhoto,
+      });
+      await UploadRefStorage.add({
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        upload: urlDescargaUploadPhoto,
+      });
+
+      abrirModalUploadUser();
+      abrirModalUploadUserExito();
+    }, 12000);
+  };
+  /*--------------------------------------------------------*/
+
   return (
     <>
       <div className="row py-2 px-4">
@@ -179,26 +269,10 @@ const Profile = ({ user }) => {
               <ul className="list-inline mb-0">
                 <li className="list-inline-item">
                   <h5 className="font-weight-bold mb-0 d-block">
-                    {userDB.photos}
+                    {gallery.length}
                   </h5>
                   <small className="text-muted">
                     <i className="fas fa-image mr-1"></i>Photos
-                  </small>
-                </li>
-                <li className="list-inline-item">
-                  <h5 className="font-weight-bold mb-0 d-block">
-                    {userDB.Followeres}
-                  </h5>
-                  <small className="text-muted">
-                    <i className="fas fa-user mr-1"></i>Followers
-                  </small>
-                </li>
-                <li className="list-inline-item">
-                  <h5 className="font-weight-bold mb-0 d-block">
-                    {userDB.Following}
-                  </h5>
-                  <small className="text-muted">
-                    <i className="fas fa-user mr-1"></i>Following
                   </small>
                 </li>
               </ul>
@@ -210,44 +284,32 @@ const Profile = ({ user }) => {
             <div className="py-4 px-4">
               <div className="d-flex align-items-center justify-content-between mb-3">
                 <h5 className="mb-0">Recent photos</h5>
-                <button href="#" className="btn btn-link text-muted">
-                  Show all
+                <button
+                  onClick={abrirModalUploadUser}
+                  className="btn btn-outline-danger btn-sm"
+                >
+                  Upload Photo
                 </button>
               </div>
-              <div className="row">
-                <div className="col-lg-6 mb-2 pr-lg-1">
-                  <img
-                    src="https://images.unsplash.com/photo-1469594292607-7bd90f8d3ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                    alt=""
-                    className="img-fluid rounded shadow-sm"
-                  />
-                </div>
-                <div className="col-lg-6 mb-2 pl-lg-1">
-                  <img
-                    src="https://images.unsplash.com/photo-1493571716545-b559a19edd14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                    alt=""
-                    className="img-fluid rounded shadow-sm"
-                  />
-                </div>
-                <div className="col-lg-6 pr-lg-1 mb-2">
-                  <img
-                    src="https://images.unsplash.com/photo-1453791052107-5c843da62d97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-                    alt=""
-                    className="img-fluid rounded shadow-sm"
-                  />
-                </div>
-                <div className="col-lg-6 pl-lg-1">
-                  <img
-                    src="https://images.unsplash.com/photo-1475724017904-b712052c192a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-                    alt=""
-                    className="img-fluid rounded shadow-sm"
-                  />
-                </div>
-              </div>
+              {/* TRAER LA GRID DE COMUNIDAD --------------------------------- */}
             </div>
           </div>
         </div>
       </div>
+      <section className="sectionProfile">
+        <div className="gridProfile">
+          {gallery !== null ? (
+            gallery.map(
+              (item) => (
+                console.log(item),
+                (<PhotoUserProfile key={item.createdAt} galleryInfo={item} />)
+              )
+            )
+          ) : (
+            <h1>Cargando...</h1>
+          )}
+        </div>
+      </section>
 
       <Modal isOpen={abierto}>
         <ModalHeader>Edit profile</ModalHeader>
@@ -270,7 +332,7 @@ const Profile = ({ user }) => {
               <Input type="text" id="usuario" placeholder={userDB.location} />
             </FormGroup>
             <FormGroup>
-              <Label for="exampleText">Bio: </Label>
+              <Label for="exampleText">Biography: </Label>
               <Input
                 type="textarea"
                 name="text"
@@ -278,13 +340,11 @@ const Profile = ({ user }) => {
                 placeholder={userDB.bio}
               />
             </FormGroup>
-
             <Button type="submit" color="primary">
               Update
             </Button>
           </Form>
         </ModalBody>
-
         <ModalFooter>
           <Button onClick={abrirModal} color="danger">
             Cancel
@@ -344,7 +404,6 @@ const Profile = ({ user }) => {
             </svg>
           </div>
         </ModalBody>
-
         <ModalFooter>
           <div className="mx-auto">
             <Button onClick={opClModalExito} color="success">
@@ -353,6 +412,69 @@ const Profile = ({ user }) => {
           </div>
         </ModalFooter>
       </Modal>
+
+      {/** ------------------- Upload Photo User -------------------------*/}
+      <Modal isOpen={uploadPhoto}>
+        <ModalHeader>Upload Photo</ModalHeader>
+        <ModalBody>
+          <Form onSubmit={uploadPhotoUser}>
+            <FormGroup>
+              <Label for="img">Photo</Label>
+              <Input type="file" id="img" name="uploadImg" />
+            </FormGroup>
+            <Button type="submit" color="primary">
+              Upload
+            </Button>
+          </Form>
+        </ModalBody>
+        <ModalFooter>
+          <Button onClick={abrirModalUploadUser} color="danger">
+            Cancel
+          </Button>
+        </ModalFooter>
+      </Modal>
+
+      <Modal isOpen={uploadPhotoExito}>
+        <ModalHeader>Success</ModalHeader>
+        <ModalBody>
+          <div className="svg-container ModalSuccess">
+            <svg
+              className="ft-green-tick"
+              xmlns="http://www.w3.org/2000/svg"
+              height="100"
+              width="100"
+              viewBox="0 0 48 48"
+              aria-hidden="true"
+            >
+              <circle
+                className="circle"
+                fill="#5bb543"
+                cx="24"
+                cy="24"
+                r="22"
+              />
+              <path
+                className="tick"
+                fill="none"
+                stroke="#FFF"
+                strokeWidth="6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeMiterlimit="10"
+                d="M14 27l5.917 4.917L34 17"
+              />
+            </svg>
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <div className="mx-auto">
+            <Button onClick={abrirModalUploadUserExito} color="success">
+              Salir
+            </Button>
+          </div>
+        </ModalFooter>
+      </Modal>
+      {/** ------------------- Upload Photo User -------------------------*/}
     </>
   );
 };

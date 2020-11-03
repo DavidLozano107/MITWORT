@@ -90,7 +90,7 @@ const NavbarCommunity = ({ user }) => {
       await CompanyRef.set({
         createdAt: idCompany,
         ...valuesCompany,
-        photo: urlDescargaCompany,
+        photoCompany: urlDescargaCompany,
         photoUser: photoURL,
         userName: displayName,
         userId: uid,
@@ -296,7 +296,7 @@ const NavbarCommunity = ({ user }) => {
 
       {/*-------------- Modal Company ---------------------------*/}
       <Modal isOpen={modalCompany}>
-        <ModalHeader>Crea una Post para las New Feeds</ModalHeader>
+        <ModalHeader>Create a Post for New Feeds</ModalHeader>
         <ModalBody>
           <Form onSubmit={createCompany}>
             <FormGroup>
