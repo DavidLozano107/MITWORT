@@ -69,9 +69,8 @@ const NavbarCommunity = ({ user }) => {
 
     const idCompany =  Date.now().toString(16)
 
-    let CompanyRef2 = db.collection("post").doc(idCompany).collection("postUser");
-    let CompanyRef = db.collection("post").doc(idCompany);
-
+    let CompanyRef2 = db.collection("usuarios").doc(email).collection("post");
+    let CompanyRef = db.collection("postUser").doc(idCompany)
 
     let urlDescargaCompany = "";
     const actualizarImagenCompany = async () => {
@@ -88,23 +87,27 @@ const NavbarCommunity = ({ user }) => {
 
     setTimeout(async () => {
       await CompanyRef.set({
-        createdAt: idCompany,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         ...valuesCompany,
         photoCompany: urlDescargaCompany,
         photoUser: photoURL,
         userName: displayName,
         userId: uid,
+        email:email,
         userLikes: 0,
         userDislikes: 0
       });
-    }, 8000)
 
-
-    setTimeout(async () => {
       await CompanyRef2.add({
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         ...valuesCompany,
         photoCompany: urlDescargaCompany,
+        photoUser: photoURL,
+        userName: displayName,
+        userId: uid,
+        email:email,
+        userLikes: 0,
+        userDislikes: 0
       });
 
       opCLModalCompany();

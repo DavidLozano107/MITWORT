@@ -10,6 +10,7 @@ import { db } from "../firebase-config";
 
 const NewsFeed = ({user}) => {
 
+  const {email} = user;
 
   const [post, setPost] = useState(null);
 
@@ -17,7 +18,7 @@ const NewsFeed = ({user}) => {
 
   useEffect(() => {
     const readDataCompany = async () => {
-      const citiesRef = db.collection("post");
+      const citiesRef = db.collection("postUser");
 
       const snapshotBd = await citiesRef.get();
       if (snapshotBd.empty) {
@@ -37,7 +38,7 @@ const NewsFeed = ({user}) => {
     };
 
     leeDatos();
-  }, []);
+  }, [post]);
 
   
   console.log(post);
