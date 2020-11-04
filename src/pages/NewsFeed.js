@@ -49,7 +49,13 @@ const NewsFeed = ({ user }) => {
               .map(
                 (post) => (
                   console.log(post),
-                  (<PostUserCompany key={post.createdAt} poster={post} />)
+                  (
+                    <PostUserCompany
+                      key={post.createdAt}
+                      poster={post}
+                      showBtn={true}
+                    />
+                  )
                 )
               )}
         </div>

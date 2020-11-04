@@ -47,7 +47,13 @@ const Publication = () => {
               .map(
                 (post) => (
                   console.log(post),
-                  (<PostUserCompany key={post.createdAt} poster={post} />)
+                  (
+                    <PostUserCompany
+                      key={post.createdAt}
+                      poster={post}
+                      showBtn={false}
+                    />
+                  )
                 )
               )}
         </div>

@@ -27,9 +27,8 @@ const Publication = () => {
     var user = auth.currentUser;
     const readDataCompany = async () => {
       const CompanyPostRef = db
-        .collection("usuarios")
-        .doc(user.email)
-        .collection("post");
+        .collection("postUser")
+        .where("email", "==", user.email);
 
       const snapshotBd = await CompanyPostRef.get();
       if (snapshotBd.empty) {

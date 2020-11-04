@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faHeart, faThumbsDown} from "@fortawesome/free-solid-svg-icons"
+import { faHeart, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 
 import { db } from "../../firebase-config";
 
 const PostUserCompany = (props) => {
+  const { poster, showBtn } = props;
 
-  const {poster} = props;
-  
   const [countInfoPost, setInfoPost] = useState({});
-  const [countDisLike, setDisLike] = useState({})
+  const [countDisLike, setDisLike] = useState({});
 
   const [countLike, setCountLike] = useState(countInfoPost.userLikes);
   const [userLike, setUserLike] = useState(false);
   const [userDontLike, setUserDontLike] = useState(false);
   const [countDontLike, setCountDontLike] = useState(countDisLike.userDislikes);
-  
+
   useEffect(() => {
     const readData = async () => {
-      const citiesRef = db.collection("postUser").where("createdAt", "==", poster.createdAt);
+      const citiesRef = db
+        .collection("postUser")
+        .where("createdAt", "==", poster.createdAt);
 
       const snapshotBd = await citiesRef.get();
       if (snapshotBd.empty) {
@@ -40,36 +41,40 @@ const PostUserCompany = (props) => {
     };
 
     leeDatos();
-  }, [countLike, userLike, countDontLike, userDontLike])
+  }, [countLike, userLike, countDontLike, userDontLike]);
 
-  
+  const postClass = countInfoPost.userLikes >= 1 ? "full" : "empty";
 
-  const postClass = countInfoPost.userLikes >= 1 ? 'full' : 'empty';
+  const postClassDontLike =
+    countDisLike.userDislikes >= 1 ? "fullDontLike" : "emptyDontLike";
 
-  const postClassDontLike = countDisLike.userDislikes >= 1 ? 'fullDontLike' : 'emptyDontLike';
+  const actualizarLikes = () => {
+    if (!userLike) {
+      db.collection("postUser")
+        .doc(poster.createdAt)
+        .update({ userLikes: (poster.userLikes += 1) });
+      setUserLike(true);
+    } else {
+      db.collection("postUser")
+        .doc(poster.createdAt)
+        .update({ userLikes: (poster.userLikes -= 1) });
+      setUserLike(false);
+    }
+  };
 
-
-
-const actualizarLikes = () =>{
-  if (!userLike) {
-    db.collection("postUser").doc(poster.createdAt).update({userLikes: poster.userLikes += 1})
-    setUserLike(true)
-  }else{
-    db.collection("postUser").doc(poster.createdAt).update({userLikes: poster.userLikes -= 1})
-    setUserLike(false)
-  }
-}
-
-
-const actualizarDontLikes = () =>{
-  if (!userDontLike) {
-    db.collection("postUser").doc(poster.createdAt).update({userDislikes: poster.userDislikes += 1})
-    setUserDontLike(true)
-  }else{
-    db.collection("postUser").doc(poster.createdAt).update({userDislikes: poster.userDislikes -= 1})
-    setUserDontLike(false)
-  }
-}
+  const actualizarDontLikes = () => {
+    if (!userDontLike) {
+      db.collection("postUser")
+        .doc(poster.createdAt)
+        .update({ userDislikes: (poster.userDislikes += 1) });
+      setUserDontLike(true);
+    } else {
+      db.collection("postUser")
+        .doc(poster.createdAt)
+        .update({ userDislikes: (poster.userDislikes -= 1) });
+      setUserDontLike(false);
+    }
+  };
 
   return (
     <>
@@ -78,7 +83,11 @@ const actualizarDontLikes = () =>{
           <div className="photoUserPostNewFeed photoUserPostNewFeed2">
             <div className="photoUser">
               <div className="vewPhotoUser">
-                <img className="photo" src={poster.photoUser} alt="Imagen"></img>
+                <img
+                  className="photo"
+                  src={poster.photoUser}
+                  alt="Imagen"
+                ></img>
               </div>
             </div>
           </div>
@@ -94,7 +103,11 @@ const actualizarDontLikes = () =>{
           <div className="imagePostContainer">
             <div className="imagePostUser">
               <div className="imageSizeUser">
-                <img className="imagePost" src={poster.photoCompany} alt="Imagen"></img>
+                <img
+                  className="imagePost"
+                  src={poster.photoCompany}
+                  alt="Imagen"
+                ></img>
               </div>
               <div className="stopImage"></div>
             </div>
@@ -106,16 +119,24 @@ const actualizarDontLikes = () =>{
               <span className="descriptionUser">{poster.descripcion}</span>
             </div>
           </div>
-            <span>{countInfoPost.userLikes}</span>
-            <button className={`likePost ${postClass}`} 
-            onClick={() => actualizarLikes()}>
-            <FontAwesomeIcon icon={faHeart}/>
-            </button>
-            <span>{countDisLike.userDislikes}</span>
-            <button className={`dontLikePost ${postClassDontLike}`} 
-            onClick={() => actualizarDontLikes()}>
-            <FontAwesomeIcon icon={faThumbsDown}/>
-            </button>
+          {showBtn && (
+            <>
+              <span>{countInfoPost.userLikes}</span>
+              <button
+                className={`likePost ${postClass}`}
+                onClick={() => actualizarLikes()}
+              >
+                <FontAwesomeIcon icon={faHeart} />
+              </button>
+              <span>{countDisLike.userDislikes}</span>
+              <button
+                className={`dontLikePost ${postClassDontLike}`}
+                onClick={() => actualizarDontLikes()}
+              >
+                <FontAwesomeIcon icon={faThumbsDown} />
+              </button>
+            </>
+          )}
         </footer>
       </div>
     </>
