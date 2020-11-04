@@ -17,7 +17,7 @@ import {
 } from "reactstrap";
 
 const Profile = ({ user }) => {
-  const { displayName, email, photoURL, uid } = user;
+  const { displayName, email, photoURL } = user;
   const [userDB, setUserDb] = useState({});
   const [gallery, setGallery] = useState(null);
   const [count, setCount] = useState([]);
@@ -113,6 +113,7 @@ const Profile = ({ user }) => {
         })
         .catch(function (error) {
           // An error happened.
+          console.log(error);
         });
     }
     if (newEmail.length > 0) {
@@ -126,6 +127,7 @@ const Profile = ({ user }) => {
         })
         .catch(function (error) {
           // An error happened.
+          console.log(error);
         });
     }
     if (photo) {
@@ -149,6 +151,7 @@ const Profile = ({ user }) => {
           })
           .catch(function (error) {
             // An error happened.
+            console.log(error);
           });
       };
 

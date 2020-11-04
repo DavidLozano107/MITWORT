@@ -1,6 +1,6 @@
 import React from "react";
 import { withFormik, Field } from "formik";
-import { auth, db, firebase, provider, storage } from "../../firebase-config";
+import { auth, db, firebase, provider } from "../../firebase-config";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

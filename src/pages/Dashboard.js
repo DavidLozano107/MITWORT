@@ -1,8 +1,8 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+// import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SideBar from "../components/companyNavbar/";
 import Content from "../components/companyContent/";
-import Publication from "../components/companyPublication/";
+// import Publication from "../components/companyPublication/";
 const Dashboard = () => {
   return (
     <>

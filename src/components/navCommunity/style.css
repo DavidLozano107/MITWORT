@@ -24,71 +24,115 @@ body {
   top: 20px;
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .row-titulo .col.text h1 {
   color: rgb(255, 255, 255);
-  font-size: 2em;
+  font-size: 3em;
   text-transform: uppercase;
 }
 
-.container .row {
-  position: relative;
-  top: 10px;
-  left: 15px;
+.sectionCommunityImage{
+  display: flex;
+  justify-content: center;
   width: 100%;
-  height: 89vh;
+  margin-bottom: 32px;
+  min-width: 360px;
 }
 
-.container .row {
+section{
+  display: block;
+}
+
+.gridCategoryCommunityImage{
+  margin-top: 16px;
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fill,minmax(360px,1fr));
 }
 
-.container .row .col {
+.imageMathRandom{
   position: relative;
-  top: 20px;
-  left: 20px;
-  width: 90%;
-  height: 80%;
-  border-radius: 50px;
-  background-color: rgb(255, 255, 255);
 }
+
+.imageMathRandomContainer{
+  /* -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1; */
+  flex-grow: 1;
+  /* -webkit-tap-highlight-color: transparent; */
+  cursor: pointer;
+  position: relative;
+  /* -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; */
+}
+
+.imageMathRandonCommunity{
+  background-color: #efefef;
+  display: block;
+  width: 100%;
+  border-radius: 10%;
+}
+
+.imageSizeMathRandom{
+  display: block;
+  overflow: hidden;
+  padding-bottom: 100%;
+}
+
+.imageRandom{
+  object-fit:fill;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100%;
+  border-radius: 10%;
+}
+
+.stopImageRandom{
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 
 .container .seacrhCommunity {
   position: relative;
-  top: 0px;
   width: 100%;
-  height: auto;
+  background-color: rgba(16, 63, 88, 0.5);
+  border-radius: 30px;
 }
 
 .container .seacrhCommunity{
   display: flex;
   justify-content: center;
   margin: 5px auto;
+  padding: 5px 15px;
 }
 
 
 .container .seacrhCommunity .createCommunity{
-  position: relative;
-  top: -5px;
-  right: 10px;
   color: #F6D55C;
   outline: none;
   font-size: 1em;
   text-shadow: 1px 0px 0px #000;
-  margin-bottom: 20px;
 }
 
 .container .seacrhCommunity .createCompany{
-  position: relative;
-  top: -5px;
-  left: 10px;;
   color: #E3553B;
   outline: none;
   font-size: 1em;
   text-shadow: 1px 0px 0px #000;
-  margin-bottom: 20px;
 }
 
 
