@@ -87,7 +87,7 @@ const NavbarCommunity = ({ user }) => {
 
     setTimeout(async () => {
       await CompanyRef.set({
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        createdAt: idCompany,
         ...valuesCompany,
         photoCompany: urlDescargaCompany,
         photoUser: photoURL,

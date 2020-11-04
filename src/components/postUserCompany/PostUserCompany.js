@@ -18,7 +18,7 @@ const PostUserCompany = (props) => {
   
   useEffect(() => {
     const readData = async () => {
-      const citiesRef = db.collection("post").where("createdAt", "==", poster.createdAt);
+      const citiesRef = db.collection("postUser").where("createdAt", "==", poster.createdAt);
 
       const snapshotBd = await citiesRef.get();
       if (snapshotBd.empty) {
@@ -52,10 +52,10 @@ const PostUserCompany = (props) => {
 
 const actualizarLikes = () =>{
   if (!userLike) {
-    db.collection("post").doc(poster.createdAt).update({userLikes: poster.userLikes += 1})
+    db.collection("postUser").doc(poster.createdAt).update({userLikes: poster.userLikes += 1})
     setUserLike(true)
   }else{
-    db.collection("post").doc(poster.createdAt).update({userLikes: poster.userLikes -= 1})
+    db.collection("postUser").doc(poster.createdAt).update({userLikes: poster.userLikes -= 1})
     setUserLike(false)
   }
 }
@@ -63,10 +63,10 @@ const actualizarLikes = () =>{
 
 const actualizarDontLikes = () =>{
   if (!userDontLike) {
-    db.collection("post").doc(poster.createdAt).update({userDislikes: poster.userDislikes += 1})
+    db.collection("postUser").doc(poster.createdAt).update({userDislikes: poster.userDislikes += 1})
     setUserDontLike(true)
   }else{
-    db.collection("post").doc(poster.createdAt).update({userDislikes: poster.userDislikes -= 1})
+    db.collection("postUser").doc(poster.createdAt).update({userDislikes: poster.userDislikes -= 1})
     setUserDontLike(false)
   }
 }
