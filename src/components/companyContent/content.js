@@ -3,8 +3,9 @@ import React from "react";
 const Content = () => {
   return (
     <>
-      {/* <!-- Content Wrapper --> */}
-      <div id="content-wrapper" className="d-flex flex-column">
+    <div className="Company">
+  {/* <!-- Content Wrapper --> */}
+  <div id="content-wrapper" className="d-flex flex-column">
         {/* <!-- Main Content --> */}
         <div id="content">
           {/* <!-- Begin Page Content --> */}
@@ -460,6 +461,8 @@ const Content = () => {
         {/* <!-- End of Main Content --> */}
       </div>
       {/* <!-- End of Content Wrapper --> */}
+    </div>
+    
     </>
   );
 };

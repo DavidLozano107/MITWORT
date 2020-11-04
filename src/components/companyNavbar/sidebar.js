@@ -1,5 +1,4 @@
 import React from "react";
-import "./css/sb-admin-2.css";
 import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
