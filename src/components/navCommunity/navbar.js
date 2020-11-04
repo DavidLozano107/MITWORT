@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-import { Link } from "react-router-dom";
+import ImageMathRandom from "../imageMathRandom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -183,19 +183,16 @@ const NavbarCommunity = ({ user }) => {
       <div className="navbarCommunity d-flex flex-column ">
         <div className="row-titulo">
           <div className="col text">
-            <h1>Comunidades</h1>
+            <h1>Communities</h1>
           </div>
         </div>
         <div className="container">
-          <div className="row">
-            <div className="col">
-              <div className="navbarCommunity-cardCommunity"></div>
+          <section className="sectionCommunityImage">
+            <div className="gridCategoryCommunityImage">
+             <ImageMathRandom photoURL={photoURL} />
+             <ImageMathRandom photoURL={photoURL} />
             </div>
-            <div className="col">
-              <div className="navbarCommunity-cardCommunity"></div>
-            </div>
-            <div className="col"></div>
-          </div>
+          </section>
           <div className="seacrhCommunity">
             <button className="createCommunity" onClick={opClModal}>
               <FontAwesomeIcon icon={faPlusCircle} />
@@ -214,7 +211,7 @@ const NavbarCommunity = ({ user }) => {
       </div>
 
       <Modal isOpen={modal}>
-        <ModalHeader>Crea una comunidad</ModalHeader>
+        <ModalHeader>Create a Community</ModalHeader>
         <ModalBody>
           <Form onSubmit={createComunity}>
             <FormGroup>
@@ -245,19 +242,19 @@ const NavbarCommunity = ({ user }) => {
               />
             </FormGroup>
             <Button type="submit" color="primary">
-              Crear
+              Create
             </Button>
           </Form>
         </ModalBody>
         <ModalFooter>
           <Button onClick={opClModal} color="danger">
-            Cancelar
+            Cancel
           </Button>
         </ModalFooter>
       </Modal>
 
       <Modal isOpen={modalExito}>
-        <ModalHeader>Comunidad Creada con Exito</ModalHeader>
+        <ModalHeader>Community Create with success</ModalHeader>
         <ModalBody>
           <div className="svg-container ModalSuccess">
             <svg

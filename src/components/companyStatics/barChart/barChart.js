@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Bar } from "react-chartjs-2";
 const BarChart = ({ likes, disLikes, descripcion }) => {
-  const [state, setState] = useState({
+  const [state /*setState*/] = useState({
     labels: ["Like", "Dislike"],
     datasets: [
       {
