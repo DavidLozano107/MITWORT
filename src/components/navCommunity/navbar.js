@@ -67,11 +67,13 @@ const NavbarCommunity = ({ user }) => {
 
     console.log(photoCompany);
 
-    const idCompany =  Date.now().toString(16)
+    const idCompany = Date.now().toString(16);
 
-    let CompanyRef2 = db.collection("post").doc(idCompany).collection("postUser");
+    let CompanyRef2 = db
+      .collection("post")
+      .doc(idCompany)
+      .collection("postUser");
     let CompanyRef = db.collection("post").doc(idCompany);
-
 
     let urlDescargaCompany = "";
     const actualizarImagenCompany = async () => {
@@ -95,10 +97,9 @@ const NavbarCommunity = ({ user }) => {
         userName: displayName,
         userId: uid,
         userLikes: 0,
-        userDislikes: 0
+        userDislikes: 0,
       });
-    }, 8000)
-
+    }, 8000);
 
     setTimeout(async () => {
       await CompanyRef2.add({

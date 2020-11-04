@@ -34,7 +34,9 @@ const Profile = ({ user }) => {
     /*--------- ---  Leer datos de Gallery ------------------------------------------*/
 
     const readDataGallery = async () => {
-      const citiesRef = db.collection("uploadPhoto").where("email", "==", email);
+      const citiesRef = db
+        .collection("uploadPhoto")
+        .where("email", "==", email);
 
       const snapshotBd = await citiesRef.get();
       if (snapshotBd.empty) {
@@ -56,7 +58,6 @@ const Profile = ({ user }) => {
     /**------------------------------------------------------------------------------ */
     return () => {};
   }, [user, email]);
-
 
   const [abierto, setabierto] = useState(false);
   const [modalExito, setmodalExito] = useState(false);
@@ -203,7 +204,7 @@ const Profile = ({ user }) => {
       .collection("uploadPhoto")
       .doc(email)
       .collection("uploadPhotoUser");
-      
+
     let UploadRef = db.collection("uploadPhoto").doc(idUploadPhoto);
 
     let urlDescargaUploadPhoto = "";

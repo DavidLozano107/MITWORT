@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import SideBar from "../components/companyNavbar/";
-import Content from "../components/companyContent/";
-import Publication from "../components/companyPublication/";
+import SideBar from "../components/companyNavbar";
+import Content from "../components/companyContent";
+import Statics from "../components/companyStatics";
 const Dashboard = () => {
   return (
     <>
@@ -12,7 +12,7 @@ const Dashboard = () => {
             <SideBar />
           </div>
           <div className="col-9 offset-md-3 ">
-            <Content />
+            <Statics />
           </div>
         </div>
       </div>

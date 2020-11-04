@@ -1,1 +1,1 @@
-export {default} from "./SearchCommunity.js"
+export { default } from "./SearchCommunity.js";

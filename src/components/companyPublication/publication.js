@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
-import User from "../components/user";
-import "./welcomeFeed.css";
-import SliderNewFeed from "../components/sliderNewFeed";
-import PostUserCompany from "../components/postUserCompany";
-import { db } from "../firebase-config";
-
-const NewsFeed = ({ user }) => {
+import { db, auth } from "../../firebase-config";
+import SliderNewFeed from "../sliderNewFeed";
+import PostUserCompany from "../postUserCompany";
+const Publication = () => {
   const [post, setPost] = useState(null);
 
   const postArray = [];
 
   useEffect(() => {
+    var user = auth.currentUser;
     const readDataCompany = async () => {
-      const citiesRef = db.collection("post");
+      const CompanyPostRef = db
+        .collection("usuarios")
+        .doc(user.email)
+        .collection("post");
 
-      const snapshotBd = await citiesRef.get();
+      const snapshotBd = await CompanyPostRef.get();
       if (snapshotBd.empty) {
         console.log("No matching documents.");
         return;
@@ -56,4 +57,4 @@ const NewsFeed = ({ user }) => {
   );
 };
 
-export default NewsFeed;
+export default Publication;

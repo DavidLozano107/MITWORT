@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import SideBar from "../components/companyNavbar/";
-import Content from "../components/companyContent/";
-import Publication from "../components/companyPublication/";
+import SideBar from "../components/companyNavbar";
+import Content from "../components/companyContent";
+import Publication from "../components/companyPublication";
+
 const Dashboard = () => {
   return (
     <>
@@ -12,7 +13,7 @@ const Dashboard = () => {
             <SideBar />
           </div>
           <div className="col-9 offset-md-3 ">
-            <Content />
+            <Publication />
           </div>
         </div>
       </div>

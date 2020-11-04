@@ -1,1 +1,1 @@
-export {default} from "./SliderNewFeed.js"
+export { default } from "./SliderNewFeed.js";

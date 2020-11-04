@@ -16,6 +16,9 @@ import NavCommunity from "../components/navCommunity";
 import NewsFeed from "../pages/NewsFeed";
 import Comunity from "../pages/comunity";
 import Dashboard from "../pages/Dashboard";
+import DashboardPublication from "../pages/Dashboard-publication";
+import DashboardStatics from "../pages/Dashboard-statics";
+
 import userEvent from "@testing-library/user-event";
 
 const Prueba = (props) => {
@@ -80,6 +83,16 @@ function Routes() {
                 <Route path="/dashboard" exact>
                   <div className="col-sm-9 ">
                     <Dashboard />
+                  </div>
+                </Route>
+                <Route path="/dashboard/publication" exact>
+                  <div className="col-sm-9 ">
+                    <DashboardPublication />
+                  </div>
+                </Route>
+                <Route path="/dashboard/statistics" exact>
+                  <div className="col-sm-9 ">
+                    <DashboardStatics />
                   </div>
                 </Route>
               </Switch>
