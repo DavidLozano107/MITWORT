@@ -38,7 +38,7 @@ const NewsFeed = ({user}) => {
     };
 
     leeDatos();
-  }, [post]);
+  }, []);
 
   
   console.log(post);
