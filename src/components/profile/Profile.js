@@ -19,7 +19,8 @@ import {
 const Profile = ({ user }) => {
   const { displayName, email, photoURL, uid } = user;
   const [userDB, setUserDb] = useState({});
-  const [gallery, setGallery] = useState([]);
+  const [gallery, setGallery] = useState(null);
+  const [count, setCount] = useState([]);
 
   const userGallery = [];
 
@@ -35,7 +36,9 @@ const Profile = ({ user }) => {
 
     const readDataGallery = async () => {
       const citiesRef = db
-        .collection("uploadPhoto")
+        .collection("usuarios")
+        .doc(email)
+        .collection("uploadPhotoUser")
         .where("email", "==", email);
 
       const snapshotBd = await citiesRef.get();
@@ -48,6 +51,7 @@ const Profile = ({ user }) => {
         userGallery.push(doc.data());
       });
       setGallery([...userGallery]);
+      setCount([...userGallery]);
     };
 
     const leeDatosGallery = async () => {
@@ -198,14 +202,12 @@ const Profile = ({ user }) => {
 
     const upload = e.target.children[0].children[1].files[0];
 
-    const idUploadPhoto = Date.now().toString(16);
+    // const idUploadPhoto = Date.now().toString(16);
 
     let UploadRefStorage = db
-      .collection("uploadPhoto")
+      .collection("usuarios")
       .doc(email)
       .collection("uploadPhotoUser");
-
-    let UploadRef = db.collection("uploadPhoto").doc(idUploadPhoto);
 
     let urlDescargaUploadPhoto = "";
 
@@ -222,13 +224,14 @@ const Profile = ({ user }) => {
     uploadImageUser();
 
     setTimeout(async () => {
-      await UploadRef.set({
-        createdAt: idUploadPhoto,
-        email: email,
-        upload: urlDescargaUploadPhoto,
-      });
+      // await UploadRefStorage.set({
+      //   createdAt: idUploadPhoto,
+      //   email: email,
+      //   upload: urlDescargaUploadPhoto,
+      // });
       await UploadRefStorage.add({
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        email: email,
         upload: urlDescargaUploadPhoto,
       });
 
@@ -270,7 +273,7 @@ const Profile = ({ user }) => {
               <ul className="list-inline mb-0">
                 <li className="list-inline-item">
                   <h5 className="font-weight-bold mb-0 d-block">
-                    {gallery.length}
+                    {count.length}
                   </h5>
                   <small className="text-muted">
                     <i className="fas fa-image mr-1"></i>Photos

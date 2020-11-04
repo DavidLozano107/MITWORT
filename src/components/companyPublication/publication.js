@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { db, auth } from "../../firebase-config";
-import SliderNewFeed from "../sliderNewFeed";
 import PostUserCompany from "../postUserCompany";
 const Publication = () => {
   const [post, setPost] = useState(null);
@@ -39,7 +38,7 @@ const Publication = () => {
 
   return (
     <>
-      <SliderNewFeed />
+      <h1>Publicaciones</h1>
       <section className="sectionNewFeedFlex newFeedCenter">
         <div className="directionNewFeed">
           {post !== null &&
