@@ -8,7 +8,7 @@ const Dashboard = () => {
     <>
       <div className="container-fluid">
         <div className="row">
-          <div style={{ position: "fixed" }} className="col-3">
+          <div style={{ position: "fixed" }} className="col-2">
             <SideBar />
           </div>
           <div className="col-9 offset-md-3 ">

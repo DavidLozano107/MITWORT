@@ -1,9 +1,6 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SideBar from "../components/companyNavbar";
-import Content from "../components/companyContent";
-import Statics from "../components/companyStatics";
-const Dashboard = () => {
+const TodoListProject = ({}) => {
   return (
     <>
       <div className="container-fluid">
@@ -12,7 +9,7 @@ const Dashboard = () => {
             <SideBar />
           </div>
           <div className="col-9 offset-md-3 ">
-            <Statics />
+            <h1>Titulo del proyecto</h1>
           </div>
         </div>
       </div>
@@ -20,4 +17,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default TodoListProject;

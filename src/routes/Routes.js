@@ -18,18 +18,12 @@ import Comunity from "../pages/comunity";
 import Dashboard from "../pages/Dashboard";
 import DashboardPublication from "../pages/Dashboard-publication";
 import DashboardStatics from "../pages/Dashboard-statics";
+import DashboardTodoList from "../pages/Dashboard-TodoList";
+import DashboardTodoListProject from "../pages/Dashboard-TodolistProject";
 
 import userEvent from "@testing-library/user-event";
 
 const Prueba = (props) => {
-  useEffect(() => {
-    const {
-      match: { params },
-    } = props;
-    console.log(params);
-    return () => {};
-  }, []);
-
   return <h1 className="text-center">Hello World!</h1>;
 };
 
@@ -93,6 +87,16 @@ function Routes() {
                 <Route path="/dashboard/statistics" exact>
                   <div className="col-sm-9 ">
                     <DashboardStatics />
+                  </div>
+                </Route>
+                <Route path="/dashboard/todolist" exact>
+                  <div className="col-sm-9 ">
+                    <DashboardTodoList />
+                  </div>
+                </Route>
+                <Route path="/dashboard/todolist/:id" exact>
+                  <div className="col-sm-9 ">
+                    <DashboardTodoListProject />
                   </div>
                 </Route>
               </Switch>
