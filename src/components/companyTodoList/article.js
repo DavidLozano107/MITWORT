@@ -9,9 +9,11 @@ const Articule = ({ article }) => {
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
           <p className="card-text">{description}</p>
-          <a href={url} target="_blank" className="btn btn-primary">
-            see more
-          </a>
+          <div className="text-center align-text-bottom">
+            <a href={url} target="_blank" className=" btn btn-primary ">
+              see more
+            </a>
+          </div>
         </div>
       </div>
     </>

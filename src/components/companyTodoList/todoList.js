@@ -17,6 +17,9 @@ import {
 import Article from "./article";
 
 const TodoList = ({}) => {
+  //regExp ELimina los espacion en blancos
+  let re = /\s/g;
+
   const user = auth.currentUser;
 
   const projectDb = db
@@ -33,6 +36,8 @@ const TodoList = ({}) => {
     img: "",
     title: "",
     description: "",
+    todoList: [],
+    todoCompleteList: [],
   });
 
   const [error, setError] = useState(false);
@@ -54,7 +59,6 @@ const TodoList = ({}) => {
             console.log(doc.data());
 
             arrayProjectos.push(doc.data());
-
             setProjects([...arrayProjectos]);
           });
         })
@@ -99,7 +103,7 @@ const TodoList = ({}) => {
 
   const createNewProject = (e) => {
     e.preventDefault();
-    const { title, description, img } = project;
+    const { title, description, img, todoList, todoCompleteList } = project;
     //Validar datos
     if (title.trim() === "" || description.trim() === "") {
       modal();
@@ -108,15 +112,13 @@ const TodoList = ({}) => {
     }
 
     //Crear un proyecto
-
-    //regExp ELimina los espacion en blancos
-    let re = /\s/g;
-
     projectDb
       .doc(title.replace(re, ""))
       .set({
         title,
         description,
+        todoList,
+        todoCompleteList,
       })
       .then(() => {
         let urlDescarga = "";
@@ -151,18 +153,19 @@ const TodoList = ({}) => {
               <ul>
                 {projects.map((pro) => (
                   <li key={pro.title}>
-                    {" "}
-                    <Link to={`/dashboard/todolist/${pro.title}`}>
+                    <Link
+                      to={`/dashboard/todolist/${pro.title.replace(re, "")}`}
+                    >
                       {pro.title}
-                    </Link>{" "}
+                    </Link>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p>
+              <small className="text-center mx-auto">
                 you don't have any projects, you can create one with the button
                 "new project"
-              </p>
+              </small>
             )}
 
             <button
@@ -178,7 +181,7 @@ const TodoList = ({}) => {
             <div className="mt-5 article">
               {articles !== null ? (
                 articles.map((art) => {
-                  return <Article article={art} />;
+                  return <Article key={art.title} article={art} />;
                 })
               ) : (
                 <h1>Cargando...</h1>
@@ -211,7 +214,7 @@ const TodoList = ({}) => {
               <Label for="description">Description: </Label>
               <Input
                 onChange={uploadState}
-                type="text"
+                type="textarea"
                 id="description"
                 placeholder="Insert any description"
               />
