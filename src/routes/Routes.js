@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Pagina from "../pages/Page404";
+// import Pagina from "../pages/Page404";
 import OpenCommunity from "../components/openCommunity";
 
 //Pages
@@ -21,11 +21,19 @@ import DashboardStatics from "../pages/Dashboard-statics";
 import DashboardTodoList from "../pages/Dashboard-TodoList";
 import DashboardTodoListProject from "../pages/Dashboard-TodolistProject";
 
-import userEvent from "@testing-library/user-event";
+// import userEvent from "@testing-library/user-event";
 
-const Prueba = (props) => {
-  return <h1 className="text-center">Hello World!</h1>;
-};
+// const Prueba = (props) => {
+//   useEffect(() => {
+//     const {
+//       match: { params },
+//     } = props;
+//     console.log(params);
+//     return () => {};
+//   }, []);
+
+//   return <h1 className="text-center">Hello World!</h1>;
+// };
 
 function Routes() {
   const [user, setUser] = React.useState(false);
@@ -55,7 +63,7 @@ function Routes() {
               <Switch>
                 <Route path="/" exact>
                   <div className="col-sm-6 ">
-                    <NewsFeed user={user} />
+                    <NewsFeed />
                   </div>
                 </Route>
                 <Route path="/profile">

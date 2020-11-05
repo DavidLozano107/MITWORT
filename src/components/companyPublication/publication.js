@@ -6,7 +6,7 @@ const Publication = () => {
 
   const postArray = [];
 
-  useEffect(() => {
+  useEffect(() => {            
     var user = auth.currentUser;
     const readDataCompany = async () => {
       const CompanyPostRef = db

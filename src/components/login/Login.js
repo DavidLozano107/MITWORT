@@ -11,7 +11,7 @@ const Login = () => {
   const [register, setRegister] = useState(false);
   const [forgotPassword, setforgotPassword] = useState(false);
 
-  const onRegisterActive = (e) => {
+  const onRegisterActive = () => {
     setRegister(true);
   };
 

@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import User from "../components/user";
 import "./welcomeFeed.css";
 import SliderNewFeed from "../components/sliderNewFeed";
 import PostUserCompany from "../components/postUserCompany";
 import { db } from "../firebase-config";
 
-const NewsFeed = ({ user }) => {
-  const { email } = user;
+const NewsFeed = () => {
 
   const [post, setPost] = useState(null);
 

@@ -1,4 +1,4 @@
-import { array } from "prop-types";
+// import { array } from "prop-types";
 import React, { useState, useEffect } from "react";
 import { db, auth } from "../../firebase-config";
 
@@ -6,8 +6,8 @@ import BarChart from "./barChart/barChart";
 
 const Publication = () => {
   const [post, setPost] = useState(null);
-  const [like, setLike] = useState(10);
-  const [disLike, setDisLike] = useState(20);
+  const [like] = useState(10);
+  const [disLike] = useState(20);
 
   const [state, setState] = useState({
     labels: ["Like", "Dislike"],

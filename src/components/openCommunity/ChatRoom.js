@@ -39,7 +39,7 @@ const ChatRoom = ({ user }) => {
   };
 
   // ----- Destructuración del objeto User (Usuarios)
-  const { displayName, photoURL, emailUser, uid } = user;
+  const { displayName, photoURL } = user;
   //-------------------------------------------------------
 
   // El estado de datos comenzara en false

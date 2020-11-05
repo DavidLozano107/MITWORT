@@ -10,10 +10,10 @@ const PostUserCompany = (props) => {
   const [countInfoPost, setInfoPost] = useState({});
   const [countDisLike, setDisLike] = useState({});
 
-  const [countLike, setCountLike] = useState(countInfoPost.userLikes);
+  const [countLike] = useState(countInfoPost.userLikes);
   const [userLike, setUserLike] = useState(false);
   const [userDontLike, setUserDontLike] = useState(false);
-  const [countDontLike, setCountDontLike] = useState(countDisLike.userDislikes);
+  const [countDontLike] = useState(countDisLike.userDislikes);
 
   useEffect(() => {
     const readData = async () => {
