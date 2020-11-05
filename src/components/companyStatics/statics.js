@@ -53,7 +53,7 @@ const Publication = () => {
   console.log(post);
   return (
     <>
-      <h1>Estadisticas</h1>
+      <h1>statistics</h1>
 
       {post !== null &&
         post

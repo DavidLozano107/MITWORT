@@ -118,7 +118,7 @@ const TodoListProject = ({}) => {
               <div className="row">
                 <div className="col">
                   <div className="">
-                    <h3 className="text-center">Create task</h3>
+                    <h3 className="text-center">create a new task</h3>
                     <FormCreatedTask
                       id={id}
                       project={project}

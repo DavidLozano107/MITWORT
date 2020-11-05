@@ -38,7 +38,7 @@ const Publication = () => {
 
   return (
     <>
-      <h1>Publicaciones</h1>
+      <h1>Your publications</h1>
       <section className="sectionNewFeedFlex newFeedCenter">
         <div className="directionNewFeed">
           {post !== null &&
