@@ -59,7 +59,6 @@ const CreatedTask = ({ id, project, updateComponent, newTodo }) => {
             type="text"
             className="form-control"
             id="todoName"
-            placeholder="To do"
           />
         </div>
         <div className="form-group">
@@ -69,7 +68,6 @@ const CreatedTask = ({ id, project, updateComponent, newTodo }) => {
             type="input"
             className="form-control"
             id="description"
-            placeholder="description"
           />
         </div>
 

@@ -1,0 +1,13 @@
+.col-2_OptionDash{
+  display: block;
+  position: absolute;
+  top: 32%;
+  background-color: #17a2b8;
+  color: rgb(255, 255, 255);
+  border-radius: 10%;
+  font-size: 1.2em;
+  box-shadow: 2px 5px 10px #63e8ff,
+              2px 5px 10px #01caee,
+              2px 5px 10px #1dddff,
+              2px 5px 10px #caf7ff
+}

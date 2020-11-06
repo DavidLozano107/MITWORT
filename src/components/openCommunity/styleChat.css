@@ -86,7 +86,7 @@ main::-webkit-scrollbar-thumb {
   margin-bottom: 20px;
   background-color: rgb(23, 24, 24);
   width: 100%;
-  max-width: 1400px;
+  max-width: 74%;
   display: flex;
   font-size: 1.5rem;
   border-radius: 40px;

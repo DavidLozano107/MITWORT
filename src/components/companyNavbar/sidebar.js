@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../companyNavbar/sideBar.css";
 const Sidebar = () => {
   return (
     <>
@@ -9,7 +10,7 @@ const Sidebar = () => {
         id="accordionSidebar"
       >
         {/* <!-- Sidebar - Brand --> */}
-        <a
+        <div
           className="sidebar-brand d-flex align-items-center justify-content-center"
           href="index.html"
         >
@@ -19,7 +20,7 @@ const Sidebar = () => {
           <div className="sidebar-brand-text mx-3">
             Company Admin <sup>Mitwort</sup>
           </div>
-        </a>
+        </div>
 
         {/* <!-- Divider --> */}
         <hr className="sidebar-divider my-0" />
@@ -42,7 +43,7 @@ const Sidebar = () => {
         <li className="nav-item">
           <Link className="nav-link collapsed" to="/dashboard/publication">
             <i className="fas fa-fw fa-cog"></i>
-            <span>publications</span>
+            <span className="optionDashboardSideBar">Publications</span>
           </Link>
         </li>
 
@@ -50,7 +51,7 @@ const Sidebar = () => {
         <li className="nav-item">
           <Link className="nav-link collapsed" to="/dashboard/statistics">
             <i className="fas fa-fw fa-wrench"></i>
-            <span>statistics</span>
+            <span className="optionDashboardSideBar">Statistics</span>
           </Link>
         </li>
 
@@ -64,7 +65,7 @@ const Sidebar = () => {
         <li className="nav-item">
           <Link className="nav-link collapsed" to="/dashboard/todolist">
             <i className="fas fa-fw fa-folder"></i>
-            <span>To-Do List</span>
+            <span className="optionDashboardSideBar">To-Do List</span>
           </Link>
         </li>
 

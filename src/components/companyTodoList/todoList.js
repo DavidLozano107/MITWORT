@@ -126,8 +126,10 @@ const TodoList = ({}) => {
         const atualizarImg = async () => {
           const refImagen = storage
             .ref()
-            .child(title.replace(re, ""))
-            .child("portaProject");
+            // .child(title.replace(re, ""))
+            .child(user.email)
+            .child("Proyect")
+            .child(new Date().toString());
           await refImagen.put(img);
           urlDescarga = await refImagen.getDownloadURL();
           projectDb.doc(title.replace(re, "")).update({
@@ -163,21 +165,21 @@ const TodoList = ({}) => {
               </ul>
             ) : (
               <small className="text-center mx-auto">
-                you don't have any projects, you can create one with the button
+                You don't have any projects, you can create one with the button
                 "new project"
               </small>
             )}
 
             <button
               type="button"
-              className="btn btn-primary btn-block"
+              className="btn btn-warning btn-block"
               onClick={modal}
             >
               New proyect
             </button>
           </div>
           <div className="col-9">
-            <h3 className="text-center mt-4"> Trending topics </h3>
+            <h3 className="text-center mt-4"> Trending Topics </h3>
             <div className="mt-5 article">
               {articles !== null ? (
                 articles.map((art) => {
@@ -193,7 +195,7 @@ const TodoList = ({}) => {
 
       <Modal isOpen={abiertoModal}>
         <ModalHeader cssModule={{ "modal-title": "w-100 text-center" }}>
-          Create a new Project
+          Create a Nsew Project
         </ModalHeader>
         <ModalBody>
           <Form onSubmit={createNewProject}>
@@ -233,7 +235,7 @@ const TodoList = ({}) => {
 
       {/*--------------------------------- MODAL EXITO ---------------------- */}
       <Modal isOpen={success}>
-        <ModalHeader>created project</ModalHeader>
+        <ModalHeader>Created Project</ModalHeader>
         <ModalBody>
           <div className="svg-container ModalSuccess">
             <svg
@@ -267,7 +269,7 @@ const TodoList = ({}) => {
         <ModalFooter>
           <div className="mx-auto">
             <Button onClick={closeSuccess} color="success">
-              salir
+              Exit
             </Button>
           </div>
         </ModalFooter>
@@ -330,7 +332,7 @@ const TodoList = ({}) => {
         <ModalFooter>
           <div className="mx-auto">
             <Button onClick={closeError} color="success">
-              salir
+              Exit
             </Button>
           </div>
         </ModalFooter>

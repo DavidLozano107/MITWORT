@@ -84,12 +84,12 @@ const TodoListProject = ({}) => {
       (todo) => todo.todo.id === idTodo
     );
 
-    //Actualiza el la lista de todo completados
+    //Actualiza la lista de todo completados
     projectDb.doc(id).update({
       todoCompleteList: [...project.todoCompleteList, ...todoComplete],
     });
 
-    //Actualiza el la lista de todos
+    //Actualiza la lista de todos
     projectDb
       .doc(id)
       .update({
@@ -102,10 +102,10 @@ const TodoListProject = ({}) => {
     <>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-2 position-fixed">
+          <div className="col-2 position-fixed col-2_OptionDash">
             <SideBar />
           </div>
-          <div className="col-9 offset-md-3 trello">
+          <div className="col-7 offset-md-4 trello">
             {project !== null ? (
               <>
                 <h2 className="text-center">{project.title}</h2>
@@ -118,7 +118,7 @@ const TodoListProject = ({}) => {
               <div className="row">
                 <div className="col">
                   <div className="">
-                    <h3 className="text-center">create a new task</h3>
+                    <h3 className="text-center">Create a New Task</h3>
                     <FormCreatedTask
                       id={id}
                       project={project}
